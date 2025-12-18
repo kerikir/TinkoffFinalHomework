@@ -14,11 +14,11 @@ kotlinx-serialization = "1.9.0"
 retrofit-kotlinx-serialization-converter = "1.0.0"
 kotlinx-coroutines-android = "1.10.2"
 kotlinx-coroutines-core = "1.10.2"
-room = "2.6.1"
+room = "2.8.4"
 ksp = "2.0.0-1.0.22"
-nav_graph = "2.7.7"
-hilt-version = "2.48.1"
-view-binding-version = "4.0.1"
+nav_graph = "2.9.6"
+hilt-version = "2.57.2"
+view-binding-version = "8.13.2"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
