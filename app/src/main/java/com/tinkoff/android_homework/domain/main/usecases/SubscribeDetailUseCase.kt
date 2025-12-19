@@ -2,6 +2,7 @@ package com.tinkoff.android_homework.domain.main.usecases
 
 import com.tinkoff.android_homework.domain.main.entities.Detail
 
+// TODO сменить назавние Use Case на метод репозитория
 
 /**
  * Описание Use Case для получения информации о финансовой операции.
