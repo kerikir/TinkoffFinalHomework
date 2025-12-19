@@ -5,6 +5,7 @@ import com.tinkoff.android_homework.domain.main.models.OperationType
 
 /**
  * Детальное описание финансовой операции.
+ *
  * Модель данных для domain слоя.
  */
 data class Detail(
