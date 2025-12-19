@@ -4,7 +4,7 @@ import com.tinkoff.android_homework.domain.main.entities.Operations
 
 
 /**
- * Описание возможных действий.
+ * Описание возможных действий с списком финансовых операций.
  *
  * Интерфейс репозитория в domain слое.
  */
