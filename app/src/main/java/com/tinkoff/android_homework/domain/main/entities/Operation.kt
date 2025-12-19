@@ -1,6 +1,7 @@
 package com.tinkoff.android_homework.domain.main.entities
 
-import com.tinkoff.android_homework.presentation.model.operations.OperationType
+import com.tinkoff.android_homework.domain.main.models.OperationType
+
 
 /**
  * Финансовая операция.
