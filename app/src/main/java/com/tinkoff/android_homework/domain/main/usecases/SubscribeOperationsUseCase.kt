@@ -4,7 +4,9 @@ import com.tinkoff.android_homework.domain.main.entities.Operations
 
 
 /**
- * @author d.shtaynmets
+ * Описание Use Case для получения списка финансовых операций.
+ *
+ * Интерфейс Use Case в domain слое.
  */
 interface SubscribeOperationsUseCase {
 
