@@ -1,7 +1,7 @@
 package com.tinkoff.android_homework.domain.main.entities
 
-// TODO убрать тип операции из слоя presentation
-import com.tinkoff.android_homework.presentation.model.operations.OperationType
+import com.tinkoff.android_homework.domain.main.models.OperationType
+
 
 /**
  * Детальное описание финансовой операции.
