@@ -4,6 +4,11 @@ import com.tinkoff.android_homework.domain.main.entities.Total
 import kotlinx.coroutines.flow.Flow
 
 
+/**
+ * Описание Use Case для подписки на изменение суммы финансовых операций.
+ *
+ * Интерфейс Use Case в domain слое.
+ */
 interface SubscribeTotalUseCase {
     suspend fun invoke(): Flow<Total>
 }

@@ -6,10 +6,19 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
+/**
+ * Use Case для подписки на изменение суммы финансовых операций.
+ *
+ * Use Case в domain слое.
+ * Реализация бизнес-логики.
+ *
+ * @param repository Откуда будут приходить данные
+ */
 class SubscribeTotalUseCaseImpl @Inject constructor(
     private val repository: TotalRepository,
 ) : SubscribeTotalUseCase {
 
+    // Вызов Use Case как обычной функции
     override suspend fun invoke(): Flow<Total> {
         return repository.subscribeTotal()
     }
