@@ -9,7 +9,7 @@ import javax.inject.Inject
 /**
  * @author d.shtaynmets
  */
-class DetailDbToDomainMapper @Inject constructor(
+class DetailDbModelMapper @Inject constructor(
     private val operationTypeMapper: StorageOperationTypeMapper
 ) : (DetailDbModel) -> Detail {
 

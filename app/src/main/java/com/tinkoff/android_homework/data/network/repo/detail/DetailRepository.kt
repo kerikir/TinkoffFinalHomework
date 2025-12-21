@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.data.network.repo.detail
 
-import com.tinkoff.android_homework.data.storage.mappers.detail.DetailDbToDomainMapper
+import com.tinkoff.android_homework.data.storage.mappers.detail.DetailDbModelMapper
 import com.tinkoff.android_homework.data.network.mappers.detail.DetailApiToDbMapper
 import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.DetailService
@@ -21,7 +21,7 @@ class SubscribeDetailRepositoryImpl @Inject constructor(
     private val detailService: DetailService,
     private val detailDao: DetailDao,
     private val detailApiToDbMapper: DetailApiToDbMapper,
-    private val detailDbToDomainMapper: DetailDbToDomainMapper,
+    private val detailDbModelMapper: DetailDbModelMapper,
     private val internetChecker: InternetChecker,
 ) : DetailRepository {
 
@@ -32,6 +32,6 @@ class SubscribeDetailRepositoryImpl @Inject constructor(
             detailDao.insertAll(detailApiToDbMapper.invoke(detailApi))
         }
 
-        return detailDbToDomainMapper.invoke(detailDao.getAll())
+        return detailDbModelMapper.invoke(detailDao.getAll())
     }
 }
