@@ -5,10 +5,11 @@ import com.tinkoff.android_homework.domain.main.entities.Operation
 import com.tinkoff.android_homework.domain.main.entities.Operations
 import javax.inject.Inject
 
+
 /**
  * @author d.shtaynmets
  */
-class OperationsDbToDomainMapper @Inject constructor() : (List<OperationDbModel>) -> Operations {
+class OperationsDbModelMapper @Inject constructor() : (List<OperationDbModel>) -> Operations {
 
     override fun invoke(operations: List<OperationDbModel>): Operations {
         return Operations(
