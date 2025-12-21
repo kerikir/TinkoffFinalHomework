@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.data.network.entities.operations
 
-import com.tinkoff.android_homework.presentation.model.operations.OperationType
+import com.tinkoff.android_homework.data.network.models.OperationType
 import kotlinx.serialization.Serializable
 
 /**
