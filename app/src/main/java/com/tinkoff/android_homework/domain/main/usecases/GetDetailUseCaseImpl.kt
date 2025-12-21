@@ -13,9 +13,9 @@ import javax.inject.Inject
  *
  * @param detailRepository Откуда будут приходить данные
  */
-class SubscribeDetailUseCaseImpl @Inject constructor(
+class GetDetailUseCaseImpl @Inject constructor(
     private val detailRepository: DetailRepository
-) : SubscribeDetailUseCase {
+) : GetDetailUseCase {
 
     /**
      * Получении дополнительной информации о финансовой операции

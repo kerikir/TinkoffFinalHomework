@@ -9,7 +9,7 @@ import com.tinkoff.android_homework.domain.main.entities.Detail
  *
  * Интерфейс Use Case в domain слое.
  */
-interface SubscribeDetailUseCase {
+interface GetDetailUseCase {
 
     suspend fun getDetail(id: Int): Detail
 }
