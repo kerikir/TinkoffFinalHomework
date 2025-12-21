@@ -2,7 +2,7 @@ package com.tinkoff.android_homework.data.storage.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.tinkoff.android_homework.data.storage.entities.DetailDb.Companion.DETAILS_TABLE_NAME
+import com.tinkoff.android_homework.data.storage.entities.DetailDbModel.Companion.DETAILS_TABLE_NAME
 import com.tinkoff.android_homework.data.storage.models.OperationType
 
 
@@ -10,7 +10,7 @@ import com.tinkoff.android_homework.data.storage.models.OperationType
  * @author d.shtaynmets
  */
 @Entity(tableName = DETAILS_TABLE_NAME)
-data class DetailDb(
+data class DetailDbModel(
     @PrimaryKey
     val id: Long,
     val type: OperationType,

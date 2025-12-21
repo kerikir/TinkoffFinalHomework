@@ -2,13 +2,12 @@ package com.tinkoff.android_homework.data.storage.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.tinkoff.android_homework.data.storage.dao.DetailDao
 import com.tinkoff.android_homework.data.storage.dao.OperationDao
 import com.tinkoff.android_homework.data.storage.dao.TotalDao
 import com.tinkoff.android_homework.data.storage.database.utils.ListStringConverter
-import com.tinkoff.android_homework.data.storage.entities.DetailDb
+import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 import com.tinkoff.android_homework.data.storage.entities.OperationDb
 import com.tinkoff.android_homework.data.storage.entities.TotalDb
 
@@ -16,7 +15,7 @@ import com.tinkoff.android_homework.data.storage.entities.TotalDb
  * @author d.shtaynmets
  */
 @Database(
-    entities = [OperationDb::class, TotalDb::class, DetailDb::class],
+    entities = [OperationDb::class, TotalDb::class, DetailDbModel::class],
     version = 3,
     exportSchema = false,
 )
