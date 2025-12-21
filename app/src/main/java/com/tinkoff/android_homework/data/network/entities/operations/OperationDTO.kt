@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * @author d.shtaynmets
  */
 @Serializable
-data class OperationApi(
+data class OperationDTO(
     val id: Int,
     val type: OperationType,
     val name: String,

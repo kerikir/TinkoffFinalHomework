@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class OperationsApi(
-    val operation: List<OperationApi>,
+    val operation: List<OperationDTO>,
 )
