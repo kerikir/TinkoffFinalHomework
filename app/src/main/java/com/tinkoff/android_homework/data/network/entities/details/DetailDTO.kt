@@ -3,6 +3,7 @@ package com.tinkoff.android_homework.data.network.entities.details
 import com.tinkoff.android_homework.data.network.models.OperationType
 import kotlinx.serialization.Serializable
 
+
 /**
  * Детальное описание финансовой операции.
  *
