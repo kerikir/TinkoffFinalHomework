@@ -3,7 +3,7 @@ package com.tinkoff.android_homework.data.storage.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.tinkoff.android_homework.data.storage.entities.OperationDb.Companion.OPERATION_TABLE_NAME
+import com.tinkoff.android_homework.data.storage.entities.OperationDbModel.Companion.OPERATION_TABLE_NAME
 import com.tinkoff.android_homework.data.storage.models.OperationType
 
 
@@ -11,7 +11,7 @@ import com.tinkoff.android_homework.data.storage.models.OperationType
  * @author d.shtaynmets
  */
 @Entity(tableName = OPERATION_TABLE_NAME)
-data class OperationDb(
+data class OperationDbModel(
     @PrimaryKey()
     val id: Long,
     val type: OperationType,
