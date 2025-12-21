@@ -2,7 +2,7 @@ package com.tinkoff.android_homework.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCase
+import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
 import com.tinkoff.android_homework.presentation.mappers.operations.OperationToUiItemMapper
 import com.tinkoff.android_homework.presentation.model.operations.OperationItem
@@ -23,7 +23,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val subscribeTotalUseCase: SubscribeTotalUseCase,
-    private val subscribeOperationsUseCase: SubscribeOperationsUseCase,
+    private val getOperationsUseCase: GetOperationsUseCase,
     val uiMapper: OperationToUiItemMapper,
 ) : ViewModel() {
 
@@ -36,7 +36,7 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             _operations.value =
-                subscribeOperationsUseCase
+                getOperationsUseCase
                     .invoke()
                     .operations
                     .map { uiMapper.invoke(it) }

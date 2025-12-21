@@ -5,8 +5,8 @@ import com.tinkoff.android_homework.data.network.repo.operations.OperationsRepos
 import com.tinkoff.android_homework.data.network.repo.total.TotalRepository
 import com.tinkoff.android_homework.domain.main.usecases.GetDetailUseCase
 import com.tinkoff.android_homework.domain.main.usecases.GetDetailUseCaseImpl
-import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCase
-import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCaseImpl
+import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
+import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCaseImpl
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCaseImpl
 import dagger.Module
@@ -34,8 +34,8 @@ object DomainModule {
     @Provides
     fun provideSubscribeOperationUseCase(
         repository: OperationsRepository,
-    ): SubscribeOperationsUseCase {
-        return SubscribeOperationsUseCaseImpl(repository)
+    ): GetOperationsUseCase {
+        return GetOperationsUseCaseImpl(repository)
     }
 
 //    @Singleton

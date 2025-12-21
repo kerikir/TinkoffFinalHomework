@@ -9,7 +9,7 @@ import com.tinkoff.android_homework.domain.main.entities.Operations
  *
  * Интерфейс Use Case в domain слое.
  */
-interface SubscribeOperationsUseCase {
+interface GetOperationsUseCase {
 
     suspend fun invoke(): Operations
 }

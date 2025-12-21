@@ -7,13 +7,9 @@ import com.tinkoff.android_homework.data.storage.dao.OperationDao
 import com.tinkoff.android_homework.data.storage.dao.TotalDao
 import com.tinkoff.android_homework.data.storage.database.AppDatabase
 import com.tinkoff.android_homework.data.storage.database.AppDatabase.Companion.DATABASE_NAME
-import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCase
-import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
-import com.tinkoff.android_homework.presentation.main.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
