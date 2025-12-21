@@ -5,6 +5,9 @@ import com.tinkoff.android_homework.domain.main.models.OperationType
 import javax.inject.Inject
 
 
+/**
+ * Преобразователь из типа операции data-слоя (storage) в тип операций domain-слоя.
+ */
 class StorageOperationTypeMapper @Inject constructor() : (StorageOperationType) -> OperationType {
 
     override fun invoke(storageOperationType: StorageOperationType): OperationType {
