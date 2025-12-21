@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * @author d.shtaynmets
  */
 @Serializable
-data class DetailApi(
+data class DetailDTO(
     val type: OperationType,
     val amount: Int,
     val comment: String,
