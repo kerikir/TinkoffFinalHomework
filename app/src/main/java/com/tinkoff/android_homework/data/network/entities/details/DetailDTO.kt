@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.data.network.entities.details
 
-import com.tinkoff.android_homework.data.network.models.OperationType
+import com.tinkoff.android_homework.data.network.models.NetworkOperationType
 import kotlinx.serialization.Serializable
 
 
@@ -16,7 +16,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DetailDTO(
     /** Тип финансовой операции */
-    val type: OperationType,
+    val type: NetworkOperationType,
     /** Сумма финансовой операции */
     val amount: Int,
     /** Комментарий к финансовой операции для отображения */

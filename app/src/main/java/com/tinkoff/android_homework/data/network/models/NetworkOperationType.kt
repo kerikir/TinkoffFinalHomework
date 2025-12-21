@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
  * Модель из data слоя (network).
  */
 @Serializable
-enum class OperationType {
+enum class NetworkOperationType {
     /**
      * Оплата товаров и услуг.
      *

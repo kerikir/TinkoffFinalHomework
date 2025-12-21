@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.data.network.entities.operations
 
-import com.tinkoff.android_homework.data.network.models.OperationType
+import com.tinkoff.android_homework.data.network.models.NetworkOperationType
 import kotlinx.serialization.Serializable
 
 
@@ -18,7 +18,7 @@ data class OperationDTO(
     /** Уникальный идентификатор финансовой операции */
     val id: Int,
     /** Тип финансовой операции */
-    val type: OperationType,
+    val type: NetworkOperationType,
     /** Название финансовой операции */
     val name: String,
     /** Сумма финансовой операции */
