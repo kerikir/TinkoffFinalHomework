@@ -10,5 +10,6 @@ import com.tinkoff.android_homework.domain.main.entities.Operations
  */
 interface GetOperationsUseCase {
 
+    // TODO сделать invoke как перегрузку оператора
     suspend fun invoke(): Operations
 }
