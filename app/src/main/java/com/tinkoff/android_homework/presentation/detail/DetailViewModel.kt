@@ -25,7 +25,7 @@ class DetailViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val detail = getDetailUseCase.getDetail(0)
+            val detail = getDetailUseCase.invoke(0)
             Log.e("TAGRTRT", "detail :${detail}")
         }
     }

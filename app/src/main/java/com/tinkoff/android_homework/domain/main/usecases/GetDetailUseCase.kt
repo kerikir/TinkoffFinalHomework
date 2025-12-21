@@ -11,5 +11,5 @@ import com.tinkoff.android_homework.domain.main.entities.Detail
  */
 interface GetDetailUseCase {
 
-    suspend fun getDetail(id: Int): Detail
+    suspend fun invoke(id: Int): Detail
 }
