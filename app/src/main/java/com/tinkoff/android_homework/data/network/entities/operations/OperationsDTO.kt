@@ -14,6 +14,9 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class OperationsDTO(
+
+    // TODO переименовать поле из operation в operations
+
     /** Список финансовых операций */
     val operation: List<OperationDTO>,
 )
