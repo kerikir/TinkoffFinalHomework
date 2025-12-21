@@ -6,6 +6,8 @@ import kotlinx.serialization.Serializable
 /**
  * Детальное описание финансовой операции.
  *
+ * Автоматическое преобразование из JSON в Kotlin и наоборот.
+ *
  * Модель данных для data слоя (network).
  *
  * Поля JSON: type, amount, comment, positions.
