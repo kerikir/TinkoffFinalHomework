@@ -4,7 +4,7 @@ import com.tinkoff.android_homework.data.network.mappers.operations.OperationApi
 import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.OperationsService
 import com.tinkoff.android_homework.data.storage.dao.OperationDao
-import com.tinkoff.android_homework.data.storage.mappers.operations.OperationsDbModelMapper
+import com.tinkoff.android_homework.data.storage.mappers.operations.OperationDbModelListMapper
 import com.tinkoff.android_homework.domain.main.entities.Operations
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ class OperationsRepositoryImpl @Inject constructor(
     private val operationsService: OperationsService,
     private val operationDao: OperationDao,
     private val operationsApiToDbMapper: OperationApiToDbMapper,
-    private val operationsDbModelMapper: OperationsDbModelMapper,
+    private val operationDbModelListMapper: OperationDbModelListMapper,
     private val internetChecker: InternetChecker
 ) : OperationsRepository {
 
@@ -30,6 +30,6 @@ class OperationsRepositoryImpl @Inject constructor(
             val operationsApi = operationsService.getOperations()
             operationDao.insertAll(*operationsApiToDbMapper.invoke(operationsApi).toTypedArray())
         }
-        return operationsDbModelMapper.invoke(operationDao.getAll())
+        return operationDbModelListMapper.invoke(operationDao.getAll())
     }
 }

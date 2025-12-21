@@ -10,14 +10,15 @@ import javax.inject.Inject
 /**
  * @author d.shtaynmets
  */
-class OperationsDbModelMapper @Inject constructor(
+class OperationDbModelListMapper @Inject constructor(
     private val operationTypeMapper: StorageOperationTypeMapper
 ) : (List<OperationDbModel>) -> Operations {
 
     override fun invoke(operations: List<OperationDbModel>): Operations {
         return Operations(
             operations = operations.map { operation ->
-                Operation(operation.type, operation.name, operation.amount)
+                Operation(operationTypeMapper(operation.type),
+                    operation.name, operation.amount)
             }
         )
     }
