@@ -9,13 +9,13 @@ import com.tinkoff.android_homework.data.storage.dao.TotalDao
 import com.tinkoff.android_homework.data.storage.database.utils.ListStringConverter
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
-import com.tinkoff.android_homework.data.storage.entities.TotalDb
+import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
 
 /**
  * @author d.shtaynmets
  */
 @Database(
-    entities = [OperationDbModel::class, TotalDb::class, DetailDbModel::class],
+    entities = [OperationDbModel::class, TotalDbModel::class, DetailDbModel::class],
     version = 3,
     exportSchema = false,
 )

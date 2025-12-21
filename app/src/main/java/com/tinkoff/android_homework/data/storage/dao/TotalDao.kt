@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.tinkoff.android_homework.data.storage.entities.TotalDb
+import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -13,9 +13,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TotalDao {
 
-    @Query("SELECT * FROM ${TotalDb.TOTAL_TABLE_NAME}")
-    fun getAll(): Flow<TotalDb>
+    @Query("SELECT * FROM ${TotalDbModel.TOTAL_TABLE_NAME}")
+    fun getAll(): Flow<TotalDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(totalDb: TotalDb)
+    suspend fun insert(totalDbModel: TotalDbModel)
 }
