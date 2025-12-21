@@ -4,7 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tinkoff.android_homework.data.storage.entities.OperationDb.Companion.OPERATION_TABLE_NAME
-import com.tinkoff.android_homework.presentation.model.operations.OperationType
+import com.tinkoff.android_homework.data.storage.models.OperationType
+
 
 /**
  * @author d.shtaynmets
