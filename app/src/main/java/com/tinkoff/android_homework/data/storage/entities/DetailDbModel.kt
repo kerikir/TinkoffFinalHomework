@@ -3,7 +3,7 @@ package com.tinkoff.android_homework.data.storage.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel.Companion.DETAILS_TABLE_NAME
-import com.tinkoff.android_homework.data.storage.models.OperationType
+import com.tinkoff.android_homework.data.storage.models.StorageOperationType
 
 
 /**
@@ -23,7 +23,7 @@ data class DetailDbModel(
     @PrimaryKey
     val id: Long,
     /** Тип финансовой операции */
-    val type: OperationType,
+    val type: StorageOperationType,
     /** Комментарий к финансовой операции для отображения */
     val comment: String,
     /** Список позиций (что входит в сумму операции) */

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tinkoff.android_homework.data.storage.entities.OperationDbModel.Companion.OPERATION_TABLE_NAME
-import com.tinkoff.android_homework.data.storage.models.OperationType
+import com.tinkoff.android_homework.data.storage.models.StorageOperationType
 
 
 /**
@@ -24,7 +24,7 @@ data class OperationDbModel(
     @PrimaryKey()
     val id: Long,
     /** Тип финансовой операции */
-    val type: OperationType,
+    val type: StorageOperationType,
     /**
      * Название финансовой операции.
      * Имя столбца в БД - name.

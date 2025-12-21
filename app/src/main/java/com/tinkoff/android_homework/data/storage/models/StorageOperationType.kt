@@ -6,7 +6,7 @@ package com.tinkoff.android_homework.data.storage.models
  *
  * Модель из data слоя (storage).
  */
-enum class OperationType {
+enum class StorageOperationType {
     /** Оплата товаров и услуг */
     OUTCOME,
     /** Входящий перевод */
