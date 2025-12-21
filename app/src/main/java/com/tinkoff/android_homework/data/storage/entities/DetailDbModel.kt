@@ -7,17 +7,32 @@ import com.tinkoff.android_homework.data.storage.models.OperationType
 
 
 /**
- * @author d.shtaynmets
+ * Детальное описание финансовой операции.
+ *
+ * Модель данных для data слоя (storage).
+ *
+ * Имя таблицы - details_table.
+ * Поля: id, type, comment, positions.
  */
 @Entity(tableName = DETAILS_TABLE_NAME)
 data class DetailDbModel(
+    /**
+     * Идентификатор в базе данных для детального описания финансовой операции.
+     * Первичный ключ.
+     */
     @PrimaryKey
     val id: Long,
+    /** Тип финансовой операции */
     val type: OperationType,
+    /** Комментарий к финансовой операции для отображения */
     val comment: String,
+    /** Список позиций (что входит в сумму операции) */
     val positions: List<String>,
 ) {
+
+    /** Хранение констант */
     companion object {
+        /** Имя таблицы в базе данных */
         const val DETAILS_TABLE_NAME = "details_table"
     }
 }
