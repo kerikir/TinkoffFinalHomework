@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.data.network.repo.operations
 
-import com.tinkoff.android_homework.data.network.mappers.operations.OperationApiToDbMapper
+import com.tinkoff.android_homework.data.network.mappers.operations.OperationsDtoMapper
 import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.OperationsService
 import com.tinkoff.android_homework.data.storage.dao.OperationDao
@@ -20,7 +20,7 @@ interface OperationsRepository {
 class OperationsRepositoryImpl @Inject constructor(
     private val operationsService: OperationsService,
     private val operationDao: OperationDao,
-    private val operationsApiToDbMapper: OperationApiToDbMapper,
+    private val operationsApiToDbMapper: OperationsDtoMapper,
     private val operationDbModelListMapper: OperationDbModelListMapper,
     private val internetChecker: InternetChecker
 ) : OperationsRepository {

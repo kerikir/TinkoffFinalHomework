@@ -7,7 +7,7 @@ import javax.inject.Inject
 /**
  * @author d.shtaynmets
  */
-class OperationApiToDbMapper @Inject constructor() : (OperationsDTO) -> List<OperationDbModel> {
+class OperationsDtoMapper @Inject constructor() : (OperationsDTO) -> List<OperationDbModel> {
 
     override fun invoke(operationsDTO: OperationsDTO): List<OperationDbModel> {
         return operationsDTO.operation.mapIndexed { index, operation ->
