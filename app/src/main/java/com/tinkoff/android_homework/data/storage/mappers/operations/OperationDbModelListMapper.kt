@@ -8,12 +8,21 @@ import javax.inject.Inject
 
 
 /**
- * @author d.shtaynmets
+ * Преобразователь финансовой операции из типа data-слоя (storage) в тип domain-слоя.
+ *
+ * @param operationTypeMapper Преобразователь из типа операции data-слоя (storage)
+ * в тип операций domain-слоя
  */
 class OperationDbModelListMapper @Inject constructor(
     private val operationTypeMapper: StorageOperationTypeMapper
 ) : (List<OperationDbModel>) -> Operations {
 
+    /**
+     *  Преобразователь финансовой операции из типа data-слоя (storage) в тип domain-слоя.
+     *
+     *  @param operations Финансовая операция data-слоя.
+     *  @return Финансовая операция domain-слоя.
+     */
     override fun invoke(operations: List<OperationDbModel>): Operations {
         return Operations(
             operations = operations.map { operation ->
