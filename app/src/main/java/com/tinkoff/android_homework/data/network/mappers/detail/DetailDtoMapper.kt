@@ -9,7 +9,7 @@ import javax.inject.Inject
 /**
  * @author d.shtaynmets
  */
-class DetailApiToDbMapper @Inject constructor(
+class DetailDtoMapper @Inject constructor(
     private val operationTypeMapper: NetworkOperationTypeMapper
 ) : (DetailDTO) -> DetailDbModel {
 
