@@ -7,7 +7,7 @@ import javax.inject.Inject
 /**
  * @author d.shtaynmets
  */
-class TotalApiToDbMapper @Inject constructor(): (TotalDTO) -> TotalDbModel {
+class TotalDtoMapper @Inject constructor(): (TotalDTO) -> TotalDbModel {
     override fun invoke(totalDTO: TotalDTO): TotalDbModel {
         return TotalDbModel(
             id = totalDTO.id.toLong(),
