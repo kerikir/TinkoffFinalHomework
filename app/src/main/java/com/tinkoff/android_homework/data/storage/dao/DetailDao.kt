@@ -6,15 +6,29 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 
+
 /**
- * @author d.shtaynmets
+ * Объект доступа к данным о детальном описании финансовой операции.
  */
 @Dao
 interface DetailDao {
 
+    /**
+     * Получение всех записей из БД о детальном описании финансовых операций.
+     *
+     * @return Детальное описание финансовых операций из data-слоя (storage)
+     */
     @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME}")
     suspend fun getAll(): DetailDbModel
 
+    /**
+     * Вставка нескольких строк в таблицу базы данных для хранения
+     * детального описания финансовой операции.
+     *
+     * При повторении данных в БД, детальной описание финансовой операции заменяется на новое.
+     *
+     * @param operations Детальное описание финансовых операций из data-слоя (storage)
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg operations: DetailDbModel)
 }
