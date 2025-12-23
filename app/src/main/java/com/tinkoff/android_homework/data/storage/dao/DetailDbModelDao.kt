@@ -19,7 +19,7 @@ interface DetailDbModelDao {
      * @return Детальное описание финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME}")
-    suspend fun getAll(): DetailDbModel
+    suspend fun getAll(): List<DetailDbModel>
 
     /**
      * Вставка нескольких строк в таблицу базы данных для хранения
