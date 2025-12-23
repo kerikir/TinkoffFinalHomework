@@ -2,8 +2,9 @@ package com.tinkoff.android_homework.data.storage.database.utils
 
 import androidx.room.TypeConverter
 
+
 /**
- * @author d.shtaynmets
+ * Конвертер типов для сохранения списка строк в базе данных
  */
 class ListStringConverter {
 
