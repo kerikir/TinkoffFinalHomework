@@ -12,7 +12,9 @@ import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
 import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
 
 /**
- * @author d.shtaynmets
+ * Конфигурация базы данных.
+ *
+ * Сущности: OperationDbModel, TotalDbModel, DetailDbModel.
  */
 @Database(
     entities = [OperationDbModel::class, TotalDbModel::class, DetailDbModel::class],
@@ -22,13 +24,19 @@ import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
 @TypeConverters(ListStringConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
+    /** Получение DAO для работы с финансовыми операциями в базе данных */
     abstract fun operationDao(): OperationDbModelDao
 
+    /** Получение DAO для работы с общей суммой финансовых операций в базе данных */
     abstract fun totalDao(): TotalDbModelDao
 
+    /** Получение DAO для работы с детальным описанием финансовых операций в базе данных */
     abstract fun detailDao(): DetailDbModelDao
 
+
+    /** Определение констант */
     companion object {
+        /** Имя базы данных */
         const val DATABASE_NAME = "operations.db"
     }
 }
