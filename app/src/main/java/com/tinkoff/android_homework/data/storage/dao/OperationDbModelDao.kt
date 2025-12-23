@@ -13,7 +13,7 @@ import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
  * Предоставляет методы для CRUD операций.
  */
 @Dao
-interface OperationDao {
+interface OperationDbModelDao {
 
     /**
      * Получение всех записей из БД о финансовых операций.

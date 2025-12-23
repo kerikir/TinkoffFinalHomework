@@ -3,7 +3,7 @@ package com.tinkoff.android_homework.data.network.repo.operations
 import com.tinkoff.android_homework.data.network.mappers.operations.OperationsDtoMapper
 import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.OperationsService
-import com.tinkoff.android_homework.data.storage.dao.OperationDao
+import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.operations.OperationDbModelListMapper
 import com.tinkoff.android_homework.domain.main.entities.Operations
 import javax.inject.Inject
@@ -19,7 +19,7 @@ interface OperationsRepository {
 
 class OperationsRepositoryImpl @Inject constructor(
     private val operationsService: OperationsService,
-    private val operationDao: OperationDao,
+    private val operationDbModelDao: OperationDbModelDao,
     private val operationsApiToDbMapper: OperationsDtoMapper,
     private val operationDbModelListMapper: OperationDbModelListMapper,
     private val internetChecker: InternetChecker
@@ -28,8 +28,8 @@ class OperationsRepositoryImpl @Inject constructor(
     override suspend fun getOperations(): Operations {
         if (internetChecker.isInternetAvailable()) {
             val operationsApi = operationsService.getOperations()
-            operationDao.insertAll(*operationsApiToDbMapper.invoke(operationsApi).toTypedArray())
+            operationDbModelDao.insertAll(*operationsApiToDbMapper.invoke(operationsApi).toTypedArray())
         }
-        return operationDbModelListMapper.invoke(operationDao.getAll())
+        return operationDbModelListMapper.invoke(operationDbModelDao.getAll())
     }
 }

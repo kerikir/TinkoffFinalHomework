@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
-import com.tinkoff.android_homework.data.storage.dao.OperationDao
+import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
 import com.tinkoff.android_homework.data.storage.dao.TotalDao
 import com.tinkoff.android_homework.data.storage.database.utils.ListStringConverter
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
@@ -22,7 +22,7 @@ import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
 @TypeConverters(ListStringConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun operationDao(): OperationDao
+    abstract fun operationDao(): OperationDbModelDao
 
     abstract fun totalDao(): TotalDao
 

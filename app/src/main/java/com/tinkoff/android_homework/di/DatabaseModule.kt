@@ -3,7 +3,7 @@ package com.tinkoff.android_homework.di
 import android.content.Context
 import androidx.room.Room.databaseBuilder
 import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
-import com.tinkoff.android_homework.data.storage.dao.OperationDao
+import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
 import com.tinkoff.android_homework.data.storage.dao.TotalDao
 import com.tinkoff.android_homework.data.storage.database.AppDatabase
 import com.tinkoff.android_homework.data.storage.database.AppDatabase.Companion.DATABASE_NAME
@@ -34,7 +34,7 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideOperationsDao(db: AppDatabase): OperationDao = db.operationDao()
+    fun provideOperationsDao(db: AppDatabase): OperationDbModelDao = db.operationDao()
 
     @Provides
     @Singleton
