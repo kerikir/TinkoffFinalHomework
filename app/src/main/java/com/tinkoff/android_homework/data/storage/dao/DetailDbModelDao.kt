@@ -16,7 +16,7 @@ interface DetailDbModelDao {
     /**
      * Получение всех записей из БД о детальном описании финансовых операций.
      *
-     * @return Детальное описание финансовых операций из data-слоя (storage)
+     * @return Список детальных описаний финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME}")
     suspend fun getAll(): List<DetailDbModel>
