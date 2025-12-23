@@ -11,10 +11,12 @@ import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
 import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
 
+
 /**
  * Конфигурация базы данных.
  *
  * Сущности: OperationDbModel, TotalDbModel, DetailDbModel.
+ * Преобразователь типов - ListStringConverter.
  */
 @Database(
     entities = [OperationDbModel::class, TotalDbModel::class, DetailDbModel::class],
