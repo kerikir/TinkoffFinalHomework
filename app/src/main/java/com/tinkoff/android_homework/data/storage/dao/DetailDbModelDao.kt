@@ -11,7 +11,7 @@ import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
  * Объект доступа к данным о детальном описании финансовой операции.
  */
 @Dao
-interface DetailDao {
+interface DetailDbModelDao {
 
     /**
      * Получение всех записей из БД о детальном описании финансовых операций.

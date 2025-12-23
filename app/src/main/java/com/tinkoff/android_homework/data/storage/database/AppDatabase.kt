@@ -3,7 +3,7 @@ package com.tinkoff.android_homework.data.storage.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.tinkoff.android_homework.data.storage.dao.DetailDao
+import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
 import com.tinkoff.android_homework.data.storage.dao.OperationDao
 import com.tinkoff.android_homework.data.storage.dao.TotalDao
 import com.tinkoff.android_homework.data.storage.database.utils.ListStringConverter
@@ -26,7 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun totalDao(): TotalDao
 
-    abstract fun detailDao(): DetailDao
+    abstract fun detailDao(): DetailDbModelDao
 
     companion object {
         const val DATABASE_NAME = "operations.db"
