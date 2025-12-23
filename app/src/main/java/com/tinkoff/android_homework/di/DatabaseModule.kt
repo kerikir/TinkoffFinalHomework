@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room.databaseBuilder
 import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
 import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
-import com.tinkoff.android_homework.data.storage.dao.TotalDao
+import com.tinkoff.android_homework.data.storage.dao.TotalDbModelDao
 import com.tinkoff.android_homework.data.storage.database.AppDatabase
 import com.tinkoff.android_homework.data.storage.database.AppDatabase.Companion.DATABASE_NAME
 import dagger.Module
@@ -38,7 +38,7 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideTotalDao(db: AppDatabase): TotalDao = db.totalDao()
+    fun provideTotalDao(db: AppDatabase): TotalDbModelDao = db.totalDao()
 
     @Provides
     @Singleton

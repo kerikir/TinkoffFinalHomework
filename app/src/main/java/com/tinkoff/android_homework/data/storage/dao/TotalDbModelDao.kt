@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
  * Предоставляет методы для CRUD операций.
  */
 @Dao
-interface TotalDao {
+interface TotalDbModelDao {
 
     /**
      * Получение всех записей из БД об общей суммы финансовых операций.
