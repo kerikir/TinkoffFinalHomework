@@ -6,6 +6,7 @@ import com.tinkoff.android_homework.data.network.services.TotalDtoService
 import com.tinkoff.android_homework.data.storage.dao.TotalDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.total.TotalDbModelMapper
 import com.tinkoff.android_homework.domain.main.entities.Total
+import com.tinkoff.android_homework.domain.main.repos.TotalRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
