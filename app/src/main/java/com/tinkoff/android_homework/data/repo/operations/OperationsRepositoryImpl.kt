@@ -1,7 +1,7 @@
-package com.tinkoff.android_homework.data.network.repo.operations
+package com.tinkoff.android_homework.data.repo.operations
 
 import com.tinkoff.android_homework.data.network.mappers.operations.OperationsDtoMapper
-import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
+import com.tinkoff.android_homework.data.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.OperationsDtoService
 import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.operations.OperationDbModelListMapper

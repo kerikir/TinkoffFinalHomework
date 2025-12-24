@@ -1,11 +1,11 @@
 package com.tinkoff.android_homework.di
 
 import com.tinkoff.android_homework.data.network.repo.detail.DetailRepository
-import com.tinkoff.android_homework.data.network.repo.detail.DetailRepositoryImpl
+import com.tinkoff.android_homework.data.repo.detail.DetailRepositoryImpl
 import com.tinkoff.android_homework.data.network.repo.operations.OperationsRepository
-import com.tinkoff.android_homework.data.network.repo.operations.OperationsRepositoryImpl
+import com.tinkoff.android_homework.data.repo.operations.OperationsRepositoryImpl
 import com.tinkoff.android_homework.data.network.repo.total.TotalRepository
-import com.tinkoff.android_homework.data.network.repo.total.TotalRepositoryImpl
+import com.tinkoff.android_homework.data.repo.total.TotalRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,7 +1,7 @@
-package com.tinkoff.android_homework.data.network.repo.total
+package com.tinkoff.android_homework.data.repo.total
 
 import com.tinkoff.android_homework.data.network.mappers.total.TotalDtoMapper
-import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
+import com.tinkoff.android_homework.data.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.TotalDtoService
 import com.tinkoff.android_homework.data.storage.dao.TotalDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.total.TotalDbModelMapper

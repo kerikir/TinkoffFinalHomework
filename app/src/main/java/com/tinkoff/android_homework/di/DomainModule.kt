@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.di
 
-import com.tinkoff.android_homework.data.network.repo.detail.DetailRepositoryImpl
+import com.tinkoff.android_homework.data.repo.detail.DetailRepositoryImpl
 import com.tinkoff.android_homework.data.network.repo.operations.OperationsRepository
 import com.tinkoff.android_homework.data.network.repo.total.TotalRepository
 import com.tinkoff.android_homework.domain.main.usecases.GetDetailUseCase

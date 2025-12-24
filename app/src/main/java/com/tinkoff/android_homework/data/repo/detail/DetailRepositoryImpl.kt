@@ -1,8 +1,8 @@
-package com.tinkoff.android_homework.data.network.repo.detail
+package com.tinkoff.android_homework.data.repo.detail
 
 import com.tinkoff.android_homework.data.storage.mappers.detail.DetailDbModelMapper
 import com.tinkoff.android_homework.data.network.mappers.detail.DetailDtoMapper
-import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
+import com.tinkoff.android_homework.data.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.DetailDtoService
 import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
 import com.tinkoff.android_homework.domain.main.entities.Detail

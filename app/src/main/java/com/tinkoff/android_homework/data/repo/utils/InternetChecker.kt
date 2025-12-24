@@ -1,4 +1,4 @@
-package com.tinkoff.android_homework.data.network.repo.utils
+package com.tinkoff.android_homework.data.repo.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
