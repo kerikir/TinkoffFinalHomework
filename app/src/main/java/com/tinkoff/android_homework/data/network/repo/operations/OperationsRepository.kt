@@ -6,6 +6,7 @@ import com.tinkoff.android_homework.data.network.services.OperationsDtoService
 import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.operations.OperationDbModelListMapper
 import com.tinkoff.android_homework.domain.main.entities.Operations
+import com.tinkoff.android_homework.domain.main.repos.OperationsRepository
 import javax.inject.Inject
 
 
