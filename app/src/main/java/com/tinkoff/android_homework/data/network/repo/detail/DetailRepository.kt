@@ -6,6 +6,7 @@ import com.tinkoff.android_homework.data.network.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.DetailDtoService
 import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
 import com.tinkoff.android_homework.domain.main.entities.Detail
+import com.tinkoff.android_homework.domain.main.repos.DetailRepository
 import javax.inject.Inject
 
 
