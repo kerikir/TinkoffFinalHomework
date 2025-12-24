@@ -8,14 +8,6 @@ import com.tinkoff.android_homework.data.storage.mappers.operations.OperationDbM
 import com.tinkoff.android_homework.domain.main.entities.Operations
 import javax.inject.Inject
 
-/**
- * @author d.shtaynmets
- */
-interface OperationsRepository {
-
-    suspend fun getOperations(): Operations
-
-}
 
 class OperationsRepositoryImpl @Inject constructor(
     private val operationsDtoService: OperationsDtoService,
