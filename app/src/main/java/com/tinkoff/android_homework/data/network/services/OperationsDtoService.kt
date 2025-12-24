@@ -7,7 +7,7 @@ import retrofit2.http.GET
 /**
  * Описание сетевых запросов для работы с списком финансовых операций.
  */
-interface OperationsService {
+interface OperationsDtoService {
 
     /**
      * Получение списка финансовых операций с сервера.
