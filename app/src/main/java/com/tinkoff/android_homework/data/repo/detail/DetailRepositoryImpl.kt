@@ -10,6 +10,9 @@ import com.tinkoff.android_homework.domain.main.repos.DetailRepository
 import javax.inject.Inject
 
 
+/**
+ * Реализация возможных действий с дополнительной информацией о финансовой операции.
+ */
 class DetailRepositoryImpl @Inject constructor(
     private val detailRemoteDataSource: DetailRemoteDataSource,
     private val detailDbModelDao: DetailDbModelDao,
@@ -18,13 +21,23 @@ class DetailRepositoryImpl @Inject constructor(
     private val internetChecker: InternetChecker,
 ) : DetailRepository {
 
-
+    /**
+     * Получение информации о финансовой операции.
+     *
+     * @param id Идентификатор финансовой операции.
+     * @return Детальное описание финансовой операции domain-слоя
+     */
     override suspend fun getDetail(id: Int): Detail {
+
+        // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
+            // Загружаем информацию из сети
             val detailDto = detailRemoteDataSource.getDetail(id)
+            // Сохраняем информацию в БД
             detailDbModelDao.insertAll(detailDtoMapper(detailDto))
         }
 
+        // TODO проверить на возврат только по id
         return detailDbModelMapper.invoke(detailDbModelDao.getAll())
     }
 }
