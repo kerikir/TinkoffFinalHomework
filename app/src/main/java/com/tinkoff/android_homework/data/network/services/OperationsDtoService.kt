@@ -14,7 +14,7 @@ interface OperationsDtoService {
      *
      * GET-запрос.
      *
-     * @return Список финансовых операций. из data-слоя (network)
+     * @return Список финансовых операций из data-слоя (network)
      */
     @GET("android_for_begginers_back_end/main/operations.json")
     suspend fun getOperations(): OperationsDTO

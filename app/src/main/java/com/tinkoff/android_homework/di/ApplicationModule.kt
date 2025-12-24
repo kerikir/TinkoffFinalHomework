@@ -3,7 +3,7 @@ package com.tinkoff.android_homework.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.tinkoff.android_homework.data.network.services.DetailDtoService
 import com.tinkoff.android_homework.data.network.services.OperationsDtoService
-import com.tinkoff.android_homework.data.network.services.TotalService
+import com.tinkoff.android_homework.data.network.services.TotalDtoService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,8 +41,8 @@ object ApplicationModule {
     }
 
     @Provides
-    fun provideTotalService(retrofit: Retrofit): TotalService {
-        return retrofit.create(TotalService::class.java)
+    fun provideTotalService(retrofit: Retrofit): TotalDtoService {
+        return retrofit.create(TotalDtoService::class.java)
     }
 
     @Provides

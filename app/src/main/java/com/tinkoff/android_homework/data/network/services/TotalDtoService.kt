@@ -7,7 +7,7 @@ import retrofit2.http.GET
 /**
  * Описание сетевых запросов для работы общей суммой финансовых операций.
  */
-interface TotalService {
+interface TotalDtoService {
 
     /**
      * Получение общей суммы финансовых операций с сервера.
