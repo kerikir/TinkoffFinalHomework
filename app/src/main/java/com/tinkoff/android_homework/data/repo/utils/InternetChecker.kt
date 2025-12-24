@@ -2,6 +2,7 @@ package com.tinkoff.android_homework.data.repo.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -16,11 +17,14 @@ class InternetChecker @Inject constructor(
 
     /** Проверка на активное сетевое подключение к интернету. */
     fun isInternetAvailable(): Boolean {
+        // Получение доступа к информации о сетевых подключениях
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        // Получение активной сети
-        val networkInfo = connectivityManager.getActiveNetworkInfo()
-        // Проверка есть ли вообще сеть и подключен ли к сети
-        return networkInfo != null && networkInfo.isConnected()
+        // Проверка есть ли активная сеть
+        val networkInfo = connectivityManager.activeNetwork ?: return false
+        // Проверка на возможности сети
+        val capabilities = connectivityManager.getNetworkCapabilities(networkInfo) ?: return false
+        // Проверка наличия интерента
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 }
