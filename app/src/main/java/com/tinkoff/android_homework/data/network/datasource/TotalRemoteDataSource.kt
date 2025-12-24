@@ -7,5 +7,5 @@ import com.tinkoff.android_homework.data.network.entities.total.TotalDTO
 interface TotalRemoteDataSource {
 
     /** Получение суммы всех финансовых операций */
-    suspend fun subscribeTotal(): TotalDTO
+    suspend fun getTotal(): TotalDTO
 }
