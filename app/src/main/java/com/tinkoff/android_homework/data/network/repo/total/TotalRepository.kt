@@ -10,14 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-/**
- * @author d.shtaynmets
- */
-interface TotalRepository {
-
-    suspend fun subscribeTotal(): Flow<Total>
-
-}
 
 class TotalRepositoryImpl @Inject constructor(
     private val totalDbModelDao: TotalDbModelDao,
