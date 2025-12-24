@@ -8,7 +8,7 @@ import retrofit2.http.Path
 /**
  * Описание сетевых запросов для работы с детальным описанием финансовых операций.
  */
-interface DetailService {
+interface DetailDtoService {
 
     /**
      * Получение детального описания финансовой операции с сервера.
