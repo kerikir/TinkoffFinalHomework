@@ -10,7 +10,7 @@ import com.tinkoff.android_homework.domain.main.repos.DetailRepository
 import javax.inject.Inject
 
 
-class SubscribeDetailRepositoryImpl @Inject constructor(
+class DetailRepositoryImpl @Inject constructor(
     private val detailDtoService: DetailDtoService,
     private val detailDbModelDao: DetailDbModelDao,
     private val detailDtoMapper: DetailDtoMapper,
