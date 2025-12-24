@@ -8,14 +8,6 @@ import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
 import com.tinkoff.android_homework.domain.main.entities.Detail
 import javax.inject.Inject
 
-/**
- * @author d.shtaynmets
- */
-interface DetailRepository {
-
-    suspend fun getDetail(id: Int): Detail
-
-}
 
 class SubscribeDetailRepositoryImpl @Inject constructor(
     private val detailDtoService: DetailDtoService,
