@@ -1,10 +1,8 @@
 package com.tinkoff.android_homework.data.repo.operations
 
-import com.tinkoff.android_homework.data.network.datasource.DetailRemoteDataSource
 import com.tinkoff.android_homework.data.network.datasource.OperationsRemoteDataSource
 import com.tinkoff.android_homework.data.network.mappers.operations.OperationsDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
-import com.tinkoff.android_homework.data.network.services.OperationsDtoService
 import com.tinkoff.android_homework.data.storage.dao.OperationDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.operations.OperationDbModelListMapper
 import com.tinkoff.android_homework.domain.main.entities.Operations
@@ -18,7 +16,7 @@ import javax.inject.Inject
 class OperationsRepositoryImpl @Inject constructor(
     private val operationsRemoteDataSource: OperationsRemoteDataSource,
     private val operationDbModelDao: OperationDbModelDao,
-    private val operationsApiToDbMapper: OperationsDtoMapper,
+    private val operationsDtoMapper: OperationsDtoMapper,
     private val operationDbModelListMapper: OperationDbModelListMapper,
     private val internetChecker: InternetChecker
 ) : OperationsRepository {
@@ -33,10 +31,12 @@ class OperationsRepositoryImpl @Inject constructor(
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
             // Загружаем информацию из сети
-            val operationsApi = operationsRemoteDataSource.getOperations()
+            val operationsDto = operationsRemoteDataSource.getOperations()
             // Сохраняем информацию в БД
-            operationDbModelDao.insertAll(*operationsApiToDbMapper(operationsApi).toTypedArray())
+            operationDbModelDao.insertAll(*operationsDtoMapper(operationsDto).toTypedArray())
         }
+
+        // Получаем все операции из БД
         return operationDbModelListMapper(operationDbModelDao.getAll())
     }
 }
