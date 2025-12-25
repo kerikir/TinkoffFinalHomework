@@ -12,6 +12,9 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
+/**
+ * Реализация возможных действий с общей суммой финансовых операций.
+ */
 class TotalRepositoryImpl @Inject constructor(
     private val totalDbModelDao: TotalDbModelDao,
     private val totalDtoService: TotalDtoService,
@@ -20,9 +23,18 @@ class TotalRepositoryImpl @Inject constructor(
     private val internetChecker: InternetChecker,
 ) : TotalRepository {
 
+    /**
+     * Подписка на общую сумму финансовых операций.
+     *
+     * @return Поток общей суммы финансовых операций
+     */
     override suspend fun subscribeTotal(): Flow<Total> {
+
+        // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
+            // Загружаем информацию из сети
             val totalApi = totalDtoService.getTotal()
+            // Сохраняем информацию в БД
             totalDbModelDao.insert(totalDtoMapper.invoke(totalApi))
         }
         return totalDbModelDao.getAll().map { totalDbModelMapper.invoke(it) }
