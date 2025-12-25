@@ -3,7 +3,6 @@ package com.tinkoff.android_homework.data.repo.total
 import com.tinkoff.android_homework.data.network.datasource.TotalRemoteDataSource
 import com.tinkoff.android_homework.data.network.mappers.total.TotalDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
-import com.tinkoff.android_homework.data.network.services.TotalDtoService
 import com.tinkoff.android_homework.data.storage.dao.TotalDbModelDao
 import com.tinkoff.android_homework.data.storage.mappers.total.TotalDbModelMapper
 import com.tinkoff.android_homework.domain.main.entities.Total
@@ -34,10 +33,12 @@ class TotalRepositoryImpl @Inject constructor(
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
             // Загружаем информацию из сети
-            val totalApi = totalRemoteDataSource.getTotal()
+            val totalDto = totalRemoteDataSource.getTotal()
             // Сохраняем информацию в БД
-            totalDbModelDao.insert(totalDtoMapper.invoke(totalApi))
+            totalDbModelDao.insert(totalDtoMapper(totalDto))
         }
-        return totalDbModelDao.getAll().map { totalDbModelMapper.invoke(it) }
+
+        // Получаем общую сумму финансовых операции из БД
+        return totalDbModelDao.getTotal().map { totalDbModelMapper(it) }
     }
 }
