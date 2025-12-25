@@ -1,6 +1,7 @@
 package com.tinkoff.android_homework.presentation.mappers.operations
 
 import com.tinkoff.android_homework.domain.main.entities.Operation
+import com.tinkoff.android_homework.presentation.mappers.models.PresentationOperationTypeMapper
 import com.tinkoff.android_homework.presentation.model.operations.OperationItem
 import javax.inject.Inject
 
@@ -8,7 +9,9 @@ import javax.inject.Inject
 /**
  * Преобразователь финансовой операции из типа domain-слоя в тип presentation-слоя.
  */
-class OperationItemMapper @Inject constructor() : (Operation) -> OperationItem {
+class OperationItemMapper @Inject constructor(
+    private val presentationOperationTypeMapper: PresentationOperationTypeMapper
+) : (Operation) -> OperationItem {
 
     /**
      *  Преобразователь финансовой операции из типа domain-слоя в тип presentation-слоя.
@@ -18,7 +21,7 @@ class OperationItemMapper @Inject constructor() : (Operation) -> OperationItem {
      */
     override operator fun invoke(operation: Operation): OperationItem {
         return OperationItem(
-            presentationOperationType = operation.type,
+            presentationOperationType = presentationOperationTypeMapper(operation.type),
             operationTitle = operation.name,
             operationSum = operation.amount
         )
