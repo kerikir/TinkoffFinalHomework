@@ -6,7 +6,7 @@ import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
 import com.tinkoff.android_homework.presentation.mappers.operations.OperationItemMapper
 import com.tinkoff.android_homework.presentation.model.operations.OperationItem
-import com.tinkoff.android_homework.presentation.model.operations.OperationType
+import com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType
 import com.tinkoff.android_homework.presentation.model.total.TotalItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -46,12 +46,12 @@ class MainViewModel @Inject constructor(
                 .map { total ->
                     val incomes = _operations
                         .value
-                        .filter { it.operationType == OperationType.INCOME }
+                        .filter { it.presentationOperationType == PresentationOperationType.INCOME }
                         .map { it.operationSum }.sum()
 
                     val outcomes = _operations
                         .value
-                        .filter { it.operationType == OperationType.OUTCOME }
+                        .filter { it.presentationOperationType == PresentationOperationType.OUTCOME }
                         .map { it.operationSum }.sum()
 
                     val progress = (outcomes.toFloat() / incomes.toFloat()) * 100f

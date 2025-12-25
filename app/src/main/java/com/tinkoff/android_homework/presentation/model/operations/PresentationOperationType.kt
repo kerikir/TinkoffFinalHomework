@@ -6,7 +6,7 @@ package com.tinkoff.android_homework.presentation.model.operations
  *
  * Модель из presentation слоя.
  */
-enum class OperationType {
+enum class PresentationOperationType {
     /** Оплата товаров и услуг */
     OUTCOME,
     /** Входящий перевод */

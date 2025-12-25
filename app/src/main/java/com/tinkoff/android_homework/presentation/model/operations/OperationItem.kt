@@ -8,7 +8,7 @@ package com.tinkoff.android_homework.presentation.model.operations
  */
 data class OperationItem(
     /** Тип финансовой операции */
-    val operationType: OperationType,
+    val presentationOperationType: PresentationOperationType,
     /** Название финансовой операции */
     val operationTitle: String,
     /** Сумма финансовой операции */

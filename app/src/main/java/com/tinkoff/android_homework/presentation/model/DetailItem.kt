@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.presentation.model
 
-import com.tinkoff.android_homework.presentation.model.operations.OperationType
+import com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType
 
 
 /**
@@ -10,7 +10,7 @@ import com.tinkoff.android_homework.presentation.model.operations.OperationType
  */
 data class DetailItem (
     /** Тип финансовой операции */
-    val type: OperationType,
+    val type: PresentationOperationType,
     /** Комментарий к финансовой операции для отображения */
     val comment: String,
     /** Список позиций (что входит в сумму операции) */
