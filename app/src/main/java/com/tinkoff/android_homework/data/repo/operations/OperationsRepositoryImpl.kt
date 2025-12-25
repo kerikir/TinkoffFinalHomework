@@ -1,5 +1,7 @@
 package com.tinkoff.android_homework.data.repo.operations
 
+import com.tinkoff.android_homework.data.network.datasource.DetailRemoteDataSource
+import com.tinkoff.android_homework.data.network.datasource.OperationsRemoteDataSource
 import com.tinkoff.android_homework.data.network.mappers.operations.OperationsDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.OperationsDtoService
@@ -10,8 +12,11 @@ import com.tinkoff.android_homework.domain.main.repos.OperationsRepository
 import javax.inject.Inject
 
 
+/**
+ * Реализация возможных действий с дополнительной информацией о финансовой операции.
+ */
 class OperationsRepositoryImpl @Inject constructor(
-    private val operationsDtoService: OperationsDtoService,
+    private val operationsRemoteDataSource: OperationsRemoteDataSource,
     private val operationDbModelDao: OperationDbModelDao,
     private val operationsApiToDbMapper: OperationsDtoMapper,
     private val operationDbModelListMapper: OperationDbModelListMapper,
@@ -20,7 +25,7 @@ class OperationsRepositoryImpl @Inject constructor(
 
     override suspend fun getOperations(): Operations {
         if (internetChecker.isInternetAvailable()) {
-            val operationsApi = operationsDtoService.getOperations()
+            val operationsApi = operationsRemoteDataSource.getOperations()
             operationDbModelDao.insertAll(*operationsApiToDbMapper.invoke(operationsApi).toTypedArray())
         }
         return operationDbModelListMapper.invoke(operationDbModelDao.getAll())
