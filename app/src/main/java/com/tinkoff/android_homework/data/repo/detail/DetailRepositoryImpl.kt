@@ -38,6 +38,6 @@ class DetailRepositoryImpl @Inject constructor(
         }
 
         // TODO проверить на возврат только по id
-        return detailDbModelMapper.invoke(detailDbModelDao.getAll())
+        return detailDbModelMapper.invoke(detailDbModelDao.getById())
     }
 }

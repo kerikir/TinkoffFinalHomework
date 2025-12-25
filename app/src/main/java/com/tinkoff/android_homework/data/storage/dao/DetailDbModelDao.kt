@@ -13,13 +13,15 @@ import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 @Dao
 interface DetailDbModelDao {
 
+    // TODO ошибка с разными идентификаторами и типами
+
     /**
      * Получение всех записей из БД о детальном описании финансовых операций.
      *
      * @return Список детальных описаний финансовых операций из data-слоя (storage)
      */
-    @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME}")
-    suspend fun getAll(): List<DetailDbModel>
+    @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME} WHERE id = :id")
+    suspend fun getById(id: Long): DetailDbModel
 
     /**
      * Вставка нескольких строк в таблицу базы данных для хранения
