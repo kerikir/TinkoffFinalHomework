@@ -1,6 +1,6 @@
 package com.tinkoff.android_homework.presentation.model
 
-import com.tinkoff.android_homework.domain.main.models.OperationType
+import com.tinkoff.android_homework.presentation.model.operations.OperationType
 
 
 /**
