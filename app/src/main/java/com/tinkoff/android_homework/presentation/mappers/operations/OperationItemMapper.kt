@@ -8,7 +8,7 @@ import javax.inject.Inject
 /**
  * Преобразователь финансовой операции из типа domain-слоя в тип presentation-слоя.
  */
-class OperationToUiItemMapper @Inject constructor() : (Operation) -> OperationItem {
+class OperationItemMapper @Inject constructor() : (Operation) -> OperationItem {
 
     /**
      *  Преобразователь финансовой операции из типа domain-слоя в тип presentation-слоя.

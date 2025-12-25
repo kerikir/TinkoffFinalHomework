@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
-import com.tinkoff.android_homework.presentation.mappers.operations.OperationToUiItemMapper
+import com.tinkoff.android_homework.presentation.mappers.operations.OperationItemMapper
 import com.tinkoff.android_homework.presentation.model.operations.OperationItem
 import com.tinkoff.android_homework.presentation.model.operations.OperationType
 import com.tinkoff.android_homework.presentation.model.total.TotalItem
@@ -24,7 +24,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val subscribeTotalUseCase: SubscribeTotalUseCase,
     private val getOperationsUseCase: GetOperationsUseCase,
-    val uiMapper: OperationToUiItemMapper,
+    val uiMapper: OperationItemMapper,
 ) : ViewModel() {
 
     private val _operations: MutableStateFlow<List<OperationItem>> = MutableStateFlow(emptyList())
