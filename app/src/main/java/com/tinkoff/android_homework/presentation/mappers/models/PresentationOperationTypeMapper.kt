@@ -16,7 +16,7 @@ class PresentationOperationTypeMapper @Inject constructor() : (OperationType) ->
      *  @param operationType Тип финансовой операции domain-слоя.
      *  @return Тип финансовой операции presentation-слоя.
      */
-    override fun invoke(operationType: OperationType): PresentationOperationType {
+    override operator fun invoke(operationType: OperationType): PresentationOperationType {
         return when (operationType) {
             OperationType.INCOME -> PresentationOperationType.INCOME
             OperationType.OUTCOME -> PresentationOperationType.OUTCOME
