@@ -37,7 +37,7 @@ class DetailRepositoryImpl @Inject constructor(
             detailDbModelDao.insertAll(detailDtoMapper(detailDto))
         }
 
-        // TODO проверить на возврат только по id
-        return detailDbModelMapper.invoke(detailDbModelDao.getById())
+        // TODO проверка на несоответствие id
+        return detailDbModelMapper(detailDbModelDao.getById(id.toLong()))
     }
 }
