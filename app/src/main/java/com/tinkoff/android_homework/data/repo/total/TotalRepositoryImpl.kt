@@ -1,5 +1,6 @@
 package com.tinkoff.android_homework.data.repo.total
 
+import com.tinkoff.android_homework.data.network.datasource.TotalRemoteDataSource
 import com.tinkoff.android_homework.data.network.mappers.total.TotalDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.network.services.TotalDtoService
@@ -17,7 +18,7 @@ import javax.inject.Inject
  */
 class TotalRepositoryImpl @Inject constructor(
     private val totalDbModelDao: TotalDbModelDao,
-    private val totalDtoService: TotalDtoService,
+    private val totalRemoteDataSource: TotalRemoteDataSource,
     private val totalDtoMapper: TotalDtoMapper,
     private val totalDbModelMapper: TotalDbModelMapper,
     private val internetChecker: InternetChecker,
@@ -33,7 +34,7 @@ class TotalRepositoryImpl @Inject constructor(
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
             // Загружаем информацию из сети
-            val totalApi = totalDtoService.getTotal()
+            val totalApi = totalRemoteDataSource.getTotal()
             // Сохраняем информацию в БД
             totalDbModelDao.insert(totalDtoMapper.invoke(totalApi))
         }
