@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 
 /**
- * Реализация возможных действий с дополнительной информацией о финансовой операции.
+ * Реализация возможных действий с списком финансовых операций.
  */
 class OperationsRepositoryImpl @Inject constructor(
     private val operationsRemoteDataSource: OperationsRemoteDataSource,
@@ -23,11 +23,20 @@ class OperationsRepositoryImpl @Inject constructor(
     private val internetChecker: InternetChecker
 ) : OperationsRepository {
 
+    /**
+     * Получение списка финансовых операций.
+     *
+     * @return Список финансовых операций domain-слоя
+     */
     override suspend fun getOperations(): Operations {
+
+        // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
+            // Загружаем информацию из сети
             val operationsApi = operationsRemoteDataSource.getOperations()
-            operationDbModelDao.insertAll(*operationsApiToDbMapper.invoke(operationsApi).toTypedArray())
+            // Сохраняем информацию в БД
+            operationDbModelDao.insertAll(*operationsApiToDbMapper(operationsApi).toTypedArray())
         }
-        return operationDbModelListMapper.invoke(operationDbModelDao.getAll())
+        return operationDbModelListMapper(operationDbModelDao.getAll())
     }
 }
