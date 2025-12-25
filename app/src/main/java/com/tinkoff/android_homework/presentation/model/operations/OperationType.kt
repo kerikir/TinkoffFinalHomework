@@ -1,15 +1,14 @@
 package com.tinkoff.android_homework.presentation.model.operations
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 /**
- * @author d.a.korotkov
+ * Тип финансовой операции.
+ *
+ * Модель из presentation слоя.
  */
-@Serializable
 enum class OperationType {
-    @SerialName("OUTCOME")
+    /** Оплата товаров и услуг */
     OUTCOME,
-    @SerialName("INCOME")
+    /** Входящий перевод */
     INCOME
 }
