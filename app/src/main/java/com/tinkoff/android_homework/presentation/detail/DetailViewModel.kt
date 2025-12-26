@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tinkoff.android_homework.domain.main.usecases.GetDetailUseCase
-import com.tinkoff.android_homework.presentation.model.DetailItem
+import com.tinkoff.android_homework.presentation.model.detail.DetailItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
