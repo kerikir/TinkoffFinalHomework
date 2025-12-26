@@ -14,23 +14,30 @@ import com.tinkoff.android_homework.presentation.adapter.OperationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<MainViewModel>()
 
-    private val operationAdapter = OperationAdapter()
-
-    private lateinit var operationsRecyclerView: RecyclerView
     private lateinit var totalSum: TextView
     private lateinit var outcome: TextView
     private lateinit var income: TextView
     private lateinit var progressBar: ProgressBar
 
+
+    /** Ссылка на представление с переработкой - список финансовых операций */
+    private lateinit var operationsRecyclerView: RecyclerView
+    /** Адаптер для Recycler View */
+    private val operationAdapter = OperationAdapter()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Получение ссылки на Recycler View
         operationsRecyclerView = findViewById(R.id.operations_recycler)
 
         totalSum = findViewById(R.id.sum)
@@ -38,12 +45,14 @@ class MainActivity : AppCompatActivity() {
         income = findViewById(R.id.income)
         progressBar = findViewById(R.id.progress_bar)
 
+        // Установка Adapter и LayoutManager для RecyclerView
         initOperationsRecycler()
 
         subscribeToOperations()
         subscribeToTotal()
-
     }
+
+
 
     private fun subscribeToTotal() {
         lifecycleScope.launch {
@@ -58,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun subscribeToOperations() {
         lifecycleScope.launch {
             viewModel.operations.collect {
@@ -66,8 +77,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+    /**
+     *  Инициализация Recycler View для работы
+     */
     private fun initOperationsRecycler() {
-        operationsRecyclerView.adapter = operationAdapter
+        // Установка вида расположения элементов RecyclerView - вертикальный список
         operationsRecyclerView.layoutManager = LinearLayoutManager(baseContext)
+        // Установка адаптера для RecyclerView
+        operationsRecyclerView.adapter = operationAdapter
     }
 }
