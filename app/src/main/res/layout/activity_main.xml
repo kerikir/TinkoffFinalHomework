@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".presentation.main.MainActivity">
 
+    <!-- Заголовок для суммы на счету -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -20,6 +21,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Сумма на счете -->
+    <!-- include - включение файла .xml в макет -->
+    <!-- layout - какой макет использовать -->
     <include
         android:id="@+id/statistic_card"
         layout="@layout/statistic_card_layout"
