@@ -26,7 +26,7 @@
     <!-- layout - какой макет использовать -->
     <include
         android:id="@+id/statistic_card"
-        layout="@layout/statistic_card_layout"
+        layout="@layout/statistic_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
