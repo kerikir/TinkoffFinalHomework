@@ -34,7 +34,7 @@ class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationViewHold
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OperationViewHolder {
         // Создание View из XML
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.operation_recycler_item, parent, false)
+            .inflate(R.layout.operation_item, parent, false)
         // Создание экземпляра View Holder
         return OperationViewHolder(itemView)
     }
