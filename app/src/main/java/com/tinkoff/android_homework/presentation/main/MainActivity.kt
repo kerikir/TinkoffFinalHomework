@@ -2,13 +2,13 @@ package com.tinkoff.android_homework.presentation.main
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.tinkoff.android_homework.R
 import com.tinkoff.android_homework.presentation.adapter.OperationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,16 +20,21 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<MainViewModel>()
 
+    /** Ссылка на текстовое представление - общая сумма на счету */
     private lateinit var totalSum: TextView
+    /** Ссылка на текстовое представление - сумма расходов */
     private lateinit var outcome: TextView
+    /** Ссылка на текстовое представление - общая начислений */
     private lateinit var income: TextView
-    private lateinit var progressBar: ProgressBar
+    /** Ссылка на индикатор прогресса - отношение доходов к расходам */
+    private lateinit var progressBar: LinearProgressIndicator
 
 
     /** Ссылка на представление с переработкой - список финансовых операций */
     private lateinit var operationsRecyclerView: RecyclerView
     /** Адаптер для Recycler View */
     private val operationAdapter = OperationAdapter()
+
 
 
     /**
@@ -44,9 +49,13 @@ class MainActivity : AppCompatActivity() {
         // Получение ссылки на Recycler View
         operationsRecyclerView = findViewById(R.id.operations_recycler)
 
+        // Получение ссылки на TextView
         totalSum = findViewById(R.id.sum)
+        // Получение ссылки на TextView
         outcome = findViewById(R.id.outcome)
+        // Получение ссылки на TextView
         income = findViewById(R.id.income)
+        // Получение ссылки на LinearProgressIndicator
         progressBar = findViewById(R.id.progress_bar)
 
         // Установка Adapter и LayoutManager для RecyclerView
