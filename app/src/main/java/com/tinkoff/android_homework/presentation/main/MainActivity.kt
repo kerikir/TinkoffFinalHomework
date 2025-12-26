@@ -32,7 +32,11 @@ class MainActivity : AppCompatActivity() {
     private val operationAdapter = OperationAdapter()
 
 
-
+    /**
+     * Создание Activity.
+     *
+     * Для инициализации интерфейса, некоторых ресурсов и восстановления состояния.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         // Установка Adapter и LayoutManager для RecyclerView
         initOperationsRecycler()
 
+        // Запуск потока для отслеживания изменения в списке финансовых операций
         subscribeToOperations()
         subscribeToTotal()
     }
@@ -69,9 +74,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    /**
+     * Подписка на изменение данных списка операций.
+     * Список операций отображается в RecyclerView.
+     */
     private fun subscribeToOperations() {
+        // Запуск корутины на время жизни Activity
         lifecycleScope.launch {
+            // Подписка на изменение списка операций
             viewModel.operations.collect {
+                // Обновление данных списка операций - Recycler View
                 operationAdapter.data = it
             }
         }
