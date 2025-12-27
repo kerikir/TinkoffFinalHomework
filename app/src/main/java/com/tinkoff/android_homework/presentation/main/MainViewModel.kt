@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 
 /**
- * @author d.shtaynmets
+ * Обработка отображаемых данных в UI - Main Activity
  */
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -38,9 +38,14 @@ class MainViewModel @Inject constructor(
     /** Доступ к данным общей суммы финансовых операций */
     val total: StateFlow<TotalItem?> = _total.asStateFlow()
 
+    
 
+    // Инициализация объекта View Model
     init {
+        // Запуск корутины в области видимости View Model - загрузка данных асинхронно
         viewModelScope.launch {
+
+            // Загрузка списка финансовых операций
             _operations.value =
                 getOperationsUseCase
                     .invoke()
