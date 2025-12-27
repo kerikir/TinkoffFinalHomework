@@ -46,11 +46,9 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
 
             // Загрузка списка финансовых операций
-            _operations.value =
-                getOperationsUseCase
-                    .invoke()
-                    .operations
-                    .map { operationItemMapper(it) }
+            _operations.value = getOperationsUseCase()
+                .operations
+                .map { operationItemMapper(it) }
 
             _total.value = subscribeTotalUseCase
                 .invoke()

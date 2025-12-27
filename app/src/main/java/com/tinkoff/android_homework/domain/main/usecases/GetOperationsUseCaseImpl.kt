@@ -18,7 +18,7 @@ class GetOperationsUseCaseImpl @Inject constructor(
 ) : GetOperationsUseCase {
 
     // Вызов Use Case как обычной функции
-    override suspend fun invoke(): Operations {
+    override suspend operator fun invoke(): Operations {
         return repository.getOperations()
     }
 }

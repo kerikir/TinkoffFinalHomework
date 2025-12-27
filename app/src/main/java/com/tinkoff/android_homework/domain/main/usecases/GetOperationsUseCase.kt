@@ -9,7 +9,6 @@ import com.tinkoff.android_homework.domain.main.entities.Operations
  * Интерфейс Use Case в domain слое.
  */
 interface GetOperationsUseCase {
-
-    // TODO сделать invoke как перегрузку оператора
-    suspend fun invoke(): Operations
+    
+    suspend operator fun invoke(): Operations
 }
