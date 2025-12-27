@@ -25,7 +25,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val subscribeTotalUseCase: SubscribeTotalUseCase,
     private val getOperationsUseCase: GetOperationsUseCase,
-    val uiMapper: OperationItemMapper,
+    val operationItemMapper: OperationItemMapper,
 ) : ViewModel() {
 
     /** Источник данных списка финансовых операций */
@@ -50,7 +50,7 @@ class MainViewModel @Inject constructor(
                 getOperationsUseCase
                     .invoke()
                     .operations
-                    .map { uiMapper.invoke(it) }
+                    .map { operationItemMapper(it) }
 
             _total.value = subscribeTotalUseCase
                 .invoke()
