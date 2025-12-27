@@ -51,8 +51,7 @@ class MainViewModel @Inject constructor(
                 .map { operationItemMapper(it) }
 
             // Загрузка и расчет общей суммы
-            _total.value = subscribeTotalUseCase
-                .invoke()
+            _total.value = subscribeTotalUseCase()
                 .map { total ->
 
                     // Определение общей суммы начислений

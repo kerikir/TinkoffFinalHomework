@@ -10,5 +10,5 @@ import kotlinx.coroutines.flow.Flow
  * Интерфейс Use Case в domain слое.
  */
 interface SubscribeTotalUseCase {
-    suspend fun invoke(): Flow<Total>
+    suspend operator fun invoke(): Flow<Total>
 }

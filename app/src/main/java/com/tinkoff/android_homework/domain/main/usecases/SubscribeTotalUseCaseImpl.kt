@@ -19,7 +19,7 @@ class SubscribeTotalUseCaseImpl @Inject constructor(
 ) : SubscribeTotalUseCase {
 
     // Вызов Use Case как обычной функции
-    override suspend fun invoke(): Flow<Total> {
+    override suspend operator fun invoke(): Flow<Total> {
         return repository.subscribeTotal()
     }
 }
