@@ -50,21 +50,27 @@ class MainViewModel @Inject constructor(
                 .operations
                 .map { operationItemMapper(it) }
 
+            // Загрузка и расчет общей суммы
             _total.value = subscribeTotalUseCase
                 .invoke()
                 .map { total ->
+
+                    // Определение общей суммы начислений
                     val incomes = _operations
                         .value
                         .filter { it.presentationOperationType == PresentationOperationType.INCOME }
                         .sumOf { it.operationSum }
 
+                    // Определение общей суммы расходов
                     val outcomes = _operations
                         .value
                         .filter { it.presentationOperationType == PresentationOperationType.OUTCOME }
                         .sumOf { it.operationSum }
 
+                    // Определение отношения расходов и доходов
                     val progress = (outcomes.toFloat() / incomes.toFloat()) * 100f
 
+                    // Инициализация статистики финансовых операций
                     TotalItem(
                         total = total.amount,
                         income = incomes,
