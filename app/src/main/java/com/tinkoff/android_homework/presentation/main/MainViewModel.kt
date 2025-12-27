@@ -53,12 +53,12 @@ class MainViewModel @Inject constructor(
                     val incomes = _operations
                         .value
                         .filter { it.presentationOperationType == PresentationOperationType.INCOME }
-                        .map { it.operationSum }.sum()
+                        .sumOf { it.operationSum }
 
                     val outcomes = _operations
                         .value
                         .filter { it.presentationOperationType == PresentationOperationType.OUTCOME }
-                        .map { it.operationSum }.sum()
+                        .sumOf { it.operationSum }
 
                     val progress = (outcomes.toFloat() / incomes.toFloat()) * 100f
 
