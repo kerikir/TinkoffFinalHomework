@@ -63,19 +63,28 @@ class MainActivity : AppCompatActivity() {
 
         // Запуск потока для отслеживания изменения в списке финансовых операций
         subscribeToOperations()
+        // Запуск потока для отслеживания изменения в статистике общей суммы финансовых операций
         subscribeToTotal()
     }
 
 
 
+    /**
+     * Подписка на изменение общей суммы финансовой операции.
+     * Статистика общей суммы финансовых операций отображается в отдельном файле макете.
+     */
     private fun subscribeToTotal() {
+        // Запуск корутины на время жизни Activity
         lifecycleScope.launch {
-            viewModel.total.collect { totalItem ->
+            // Подписка на изменение статистики общей суммы финансовых операций
+            viewModel.total.collect { totalItem -> 
+                // Установка суммы начислений
                 income.text = totalItem?.income.toString()
+                // Установка суммы расходов
                 outcome.text = totalItem?.outcome.toString()
+                // Установка общей суммы финансовых операций
                 totalSum.text = totalItem?.total.toString()
-
-                Log.e("TAGRTRT", "totalItem?.progress :${totalItem?.progress}")
+                // Обновление прогресса - отношения расходов и доходов
                 progressBar.progress = totalItem?.progress?.toInt() ?: 0
             }
         }
