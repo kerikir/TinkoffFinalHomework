@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 /**
  * @author d.shtaynmets
  */
@@ -27,11 +28,16 @@ class MainViewModel @Inject constructor(
     val uiMapper: OperationItemMapper,
 ) : ViewModel() {
 
+    /** Источник данных списка финансовых операций */
     private val _operations: MutableStateFlow<List<OperationItem>> = MutableStateFlow(emptyList())
+    /** Доступ к данным списка финансовых операций */
     val operations: StateFlow<List<OperationItem>> = _operations.asStateFlow()
 
+    /** Источник данных общей суммы финансовых операций */
     private val _total: MutableStateFlow<TotalItem?> = MutableStateFlow(null)
+    /** Доступ к данным общей суммы финансовых операций */
     val total: StateFlow<TotalItem?> = _total.asStateFlow()
+
 
     init {
         viewModelScope.launch {
