@@ -15,13 +15,17 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 /**
- * @author d.shtaynmets
+ * Модуль для внедрения зависимостей domain-слоя.
+ *
+ * Подключен к компоненту времени жизни всего приложения.
  */
 @Module
 @InstallIn(SingletonComponent::class)
 object DomainModule {
 
+    /** Предоставляем зависимость Use Case для подписки на изменение суммы финансовых операций */
     @Singleton
     @Provides
     fun provideSubscribeTotalUseCase(
@@ -30,6 +34,8 @@ object DomainModule {
         return SubscribeTotalUseCaseImpl(repository)
     }
 
+
+    /** Предоставляем зависимость Use Case для подписки на изменение списка финансовых операций */
     @Singleton
     @Provides
     fun provideSubscribeOperationUseCase(
@@ -38,14 +44,8 @@ object DomainModule {
         return GetOperationsUseCaseImpl(repository)
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideDetailUseCase(
-//        repository: DetailRepository,
-//    ): SubscribeDetailUseCase {
-//        return SubscribeDetailUseCaseImpl(repository)
-//    }
 
+    /** Предоставляем зависимость Use Case для подписки на изменение описания финансовой операции */
     @Singleton
     @Provides
     fun provideSubscribeDetailUseCase(
@@ -54,5 +54,3 @@ object DomainModule {
         return GetDetailUseCaseImpl(repository)
     }
 }
-
-
