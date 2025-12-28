@@ -1,11 +1,12 @@
 package com.tinkoff.android_homework.presentation.main
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -76,16 +77,20 @@ class MainActivity : AppCompatActivity() {
     private fun subscribeToTotal() {
         // Запуск корутины на время жизни Activity
         lifecycleScope.launch {
-            // Подписка на изменение статистики общей суммы финансовых операций
-            viewModel.total.collect { totalItem -> 
-                // Установка суммы начислений
-                income.text = totalItem?.income.toString()
-                // Установка суммы расходов
-                outcome.text = totalItem?.outcome.toString()
-                // Установка общей суммы финансовых операций
-                totalSum.text = totalItem?.total.toString()
-                // Обновление прогресса - отношения расходов и доходов
-                progressBar.progress = totalItem?.progress?.toInt() ?: 0
+            // Работа корутины в зависимости от жизненного цикла UI
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+                // Подписка на изменение статистики общей суммы финансовых операций
+                viewModel.total.collect { totalItem ->
+                    // Установка суммы начислений
+                    income.text = totalItem?.income.toString()
+                    // Установка суммы расходов
+                    outcome.text = totalItem?.outcome.toString()
+                    // Установка общей суммы финансовых операций
+                    totalSum.text = totalItem?.total.toString()
+                    // Обновление прогресса - отношения расходов и доходов
+                    progressBar.progress = totalItem?.progress?.toInt() ?: 0
+                }
             }
         }
     }
@@ -99,10 +104,14 @@ class MainActivity : AppCompatActivity() {
     private fun subscribeToOperations() {
         // Запуск корутины на время жизни Activity
         lifecycleScope.launch {
-            // Подписка на изменение списка операций
-            viewModel.operations.collect {
-                // Обновление данных списка операций - Recycler View
-                operationAdapter.data = it
+            // Работа корутины в зависимости от жизненного цикла UI
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+                // Подписка на изменение списка операций
+                viewModel.operations.collect {
+                    // Обновление данных списка операций - Recycler View
+                    operationAdapter.data = it
+                }
             }
         }
     }
