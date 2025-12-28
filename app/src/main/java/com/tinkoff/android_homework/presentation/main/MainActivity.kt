@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    // Модель представлений - ленивая инициализация
     private val viewModel by viewModels<MainViewModel>()
 
     /** Ссылка на текстовое представление - общая сумма на счету */
