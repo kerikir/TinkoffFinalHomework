@@ -2,6 +2,7 @@ package com.tinkoff.android_homework.domain.main.usecases
 
 import com.tinkoff.android_homework.domain.main.entities.Detail
 import com.tinkoff.android_homework.domain.main.repos.DetailRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
@@ -18,12 +19,12 @@ class SubscribeDetailUseCaseImpl @Inject constructor(
 ) : SubscribeDetailUseCase {
 
     /**
-     * Получении дополнительной информации о финансовой операции
+     * Подписка на изменение дополнительной информации о финансовой операции
      *
      * @param id Идентификатор финансовой информации
-     * @return Информация о финансовой операции
+     * @return Поток с информацией о финансовой операции
      */
-    override suspend fun invoke(id: Int): Detail {
+    override suspend operator fun invoke(id: Int): Flow<Detail> {
         return detailRepository.subscribeDetail(id)
     }
 }
