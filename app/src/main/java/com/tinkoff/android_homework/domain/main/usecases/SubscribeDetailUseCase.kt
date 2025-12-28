@@ -1,6 +1,7 @@
 package com.tinkoff.android_homework.domain.main.usecases
 
 import com.tinkoff.android_homework.domain.main.entities.Detail
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -10,5 +11,5 @@ import com.tinkoff.android_homework.domain.main.entities.Detail
  */
 interface SubscribeDetailUseCase {
 
-    suspend operator fun invoke(id: Int): Detail
+    suspend operator fun invoke(id: Int): Flow<Detail>
 }
