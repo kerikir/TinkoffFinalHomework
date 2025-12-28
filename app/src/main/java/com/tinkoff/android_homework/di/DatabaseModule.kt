@@ -14,8 +14,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 /**
- * @author d.shtaynmets
+ * Модуль для внедрения зависимостей для работы с БД.
+ *
+ * Подключен к компоненту времени жизни всего приложения.
  */
 @Module
 @InstallIn(SingletonComponent::class)
@@ -32,14 +35,24 @@ object DatabaseModule {
             .fallbackToDestructiveMigration()
             .build()
 
+
+    /** Предоставляем зависимость объекта DAO для работы с финансовыми операциями в базе данных */
     @Provides
     @Singleton
     fun provideOperationsDao(db: AppDatabase): OperationDbModelDao = db.operationDao()
 
+    /**
+     * Предоставляем зависимость объекта DAO для работы
+     * с общей суммой финансовых операций в базе данных
+     */
     @Provides
     @Singleton
     fun provideTotalDao(db: AppDatabase): TotalDbModelDao = db.totalDao()
 
+    /**
+     * Предоставляем зависимость объекта DAO для работы
+     * с детальным описанием финансовых операций в базе данных
+     */
     @Provides
     @Singleton
     fun provideDetailDao(db: AppDatabase): DetailDbModelDao = db.detailDao()
