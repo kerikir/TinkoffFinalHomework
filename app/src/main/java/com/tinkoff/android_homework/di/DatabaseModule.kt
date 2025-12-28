@@ -12,6 +12,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 
@@ -26,13 +27,14 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provide(@ApplicationContext context: Context) =
+    fun provideDatabase(@ApplicationContext context: Context) : AppDatabase =
         databaseBuilder(
             context,
-            AppDatabase::class.java, DATABASE_NAME
+            AppDatabase::class.java,
+            DATABASE_NAME
         )
-            .allowMainThreadQueries()
-            .fallbackToDestructiveMigration()
+            .addMigrations()
+            .setQueryExecutor(Executors.newFixedThreadPool(4))
             .build()
 
 
