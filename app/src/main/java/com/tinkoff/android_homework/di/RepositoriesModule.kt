@@ -19,7 +19,7 @@ import dagger.hilt.components.SingletonComponent
  */
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class NetworkModule {
+abstract class RepositoriesModule {
 
     /** Связывает интерфейс с реализацией для работы с общей суммой финансовых операций */
     @Binds
