@@ -16,10 +16,19 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 
+/**
+ * Модуль для внедрения зависимостей сетевого источника данных.
+ *
+ * Подключен к компоненту времени жизни всего приложения.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDataSourceModule {
 
+    /**
+     * Предоставляем зависимость для сетевого источника данных
+     * для детального описания финансовой операции
+     */
     @Singleton
     @Provides
     fun provideDetailRemoteDataSource(detailDtoService: DetailDtoService) : DetailRemoteDataSource {
@@ -27,6 +36,10 @@ object RemoteDataSourceModule {
     }
 
 
+    /**
+     * Предоставляем зависимость для сетевого источника данных
+     * для общей суммы финансовых операций
+     */
     @Singleton
     @Provides
     fun provideTotalRemoteDataSource(totalDtoService: TotalDtoService) : TotalRemoteDataSource {
@@ -34,9 +47,13 @@ object RemoteDataSourceModule {
     }
 
 
+    /**
+     * Предоставляем зависимость для сетевого источника данных
+     * для списка финансовых операций
+     */
     @Singleton
     @Provides
-    fun provideDetailRemoteDataSource(operationsDtoService: OperationsDtoService) : OperationsRemoteDataSource {
+    fun provideOperationsRemoteDataSource(operationsDtoService: OperationsDtoService) : OperationsRemoteDataSource {
         return OperationsRemoteDataSourceImpl(operationsDtoService)
     }
 }
