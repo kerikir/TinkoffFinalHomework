@@ -27,7 +27,7 @@ class DetailRepositoryImpl @Inject constructor(
      * @param id Идентификатор финансовой операции.
      * @return Детальное описание финансовой операции domain-слоя
      */
-    override suspend fun getDetail(id: Int): Detail {
+    override suspend fun subscribeDetail(id: Int): Detail {
 
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {

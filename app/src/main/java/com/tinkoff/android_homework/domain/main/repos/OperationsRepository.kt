@@ -11,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface OperationsRepository {
 
-    /** Подписка на измененеи списка всех финансовых операций */
+    /** Подписка на изменение списка всех финансовых операций */
     suspend fun subscribeOperations(): Flow<Operations>
 }

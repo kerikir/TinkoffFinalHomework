@@ -24,6 +24,6 @@ class GetDetailUseCaseImpl @Inject constructor(
      * @return Информация о финансовой операции
      */
     override suspend fun invoke(id: Int): Detail {
-        return detailRepository.getDetail(id)
+        return detailRepository.subscribeDetail(id)
     }
 }
