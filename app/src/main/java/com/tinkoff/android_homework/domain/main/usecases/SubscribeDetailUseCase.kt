@@ -8,7 +8,7 @@ import com.tinkoff.android_homework.domain.main.entities.Detail
  *
  * Интерфейс Use Case в domain слое.
  */
-interface GetDetailUseCase {
+interface SubscribeDetailUseCase {
 
     // TODO сделать invoke как перегрузку оператора
     suspend fun invoke(id: Int): Detail

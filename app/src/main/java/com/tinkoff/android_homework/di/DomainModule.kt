@@ -3,8 +3,8 @@ package com.tinkoff.android_homework.di
 import com.tinkoff.android_homework.data.repo.detail.DetailRepositoryImpl
 import com.tinkoff.android_homework.domain.main.repos.OperationsRepository
 import com.tinkoff.android_homework.domain.main.repos.TotalRepository
-import com.tinkoff.android_homework.domain.main.usecases.GetDetailUseCase
-import com.tinkoff.android_homework.domain.main.usecases.GetDetailUseCaseImpl
+import com.tinkoff.android_homework.domain.main.usecases.SubscribeDetailUseCase
+import com.tinkoff.android_homework.domain.main.usecases.SubscribeDetailUseCaseImpl
 import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
 import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCaseImpl
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
@@ -50,7 +50,7 @@ object DomainModule {
     @Provides
     fun provideSubscribeDetailUseCase(
         repository: DetailRepositoryImpl,
-    ):  GetDetailUseCase {
-        return GetDetailUseCaseImpl(repository)
+    ):  SubscribeDetailUseCase {
+        return SubscribeDetailUseCaseImpl(repository)
     }
 }
