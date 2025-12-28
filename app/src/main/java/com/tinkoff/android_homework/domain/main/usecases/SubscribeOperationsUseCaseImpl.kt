@@ -2,6 +2,7 @@ package com.tinkoff.android_homework.domain.main.usecases
 
 import com.tinkoff.android_homework.domain.main.entities.Operations
 import com.tinkoff.android_homework.domain.main.repos.OperationsRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
@@ -22,7 +23,7 @@ class SubscribeOperationsUseCaseImpl @Inject constructor(
      *
      * @return Поток со списком всех финансовых операций
      */
-    override suspend operator fun invoke(): Operations {
+    override suspend operator fun invoke(): Flow<Operations> {
         return repository.subscribeOperations()
     }
 }
