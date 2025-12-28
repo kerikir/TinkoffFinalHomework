@@ -10,6 +10,11 @@ import kotlinx.coroutines.flow.Flow
  * Интерфейс Use Case в domain слое.
  */
 interface SubscribeOperationsUseCase {
-    
+
+    /**
+     * Подписка на изменение списка всех финансовых операций
+     *
+     * @return Поток со списком всех финансовых операций
+     */
     suspend operator fun invoke(): Flow<Operations>
 }
