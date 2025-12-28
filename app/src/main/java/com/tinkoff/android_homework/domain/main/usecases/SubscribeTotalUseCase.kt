@@ -10,5 +10,11 @@ import kotlinx.coroutines.flow.Flow
  * Интерфейс Use Case в domain слое.
  */
 interface SubscribeTotalUseCase {
+
+    /**
+     * Подписка на изменение общей суммы финансовых операций
+     *
+     * @return Поток с общей суммой финансовых операций
+     */
     suspend operator fun invoke(): Flow<Total>
 }
