@@ -4,7 +4,8 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 /**
- * @author d.shtaynmets
+ * Точка входа для Dagger Hilt.
+ * Инициализация Jetpack Hilt в приложении.
  */
 @HiltAndroidApp
 class TBankAndroidApplication : Application()
