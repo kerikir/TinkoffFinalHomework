@@ -17,7 +17,11 @@ class SubscribeOperationsUseCaseImpl @Inject constructor(
     private val repository: OperationsRepository
 ) : SubscribeOperationsUseCase {
 
-    // Вызов Use Case как обычной функции
+    /**
+     * Подписка на изменение списка всех финансовых операций
+     *
+     * @return Поток со списком всех финансовых операций
+     */
     override suspend operator fun invoke(): Operations {
         return repository.subscribeOperations()
     }
