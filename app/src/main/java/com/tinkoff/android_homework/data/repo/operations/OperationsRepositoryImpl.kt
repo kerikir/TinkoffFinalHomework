@@ -26,7 +26,7 @@ class OperationsRepositoryImpl @Inject constructor(
      *
      * @return Список финансовых операций domain-слоя
      */
-    override suspend fun getOperations(): Operations {
+    override suspend fun subscribeOperations(): Operations {
 
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {

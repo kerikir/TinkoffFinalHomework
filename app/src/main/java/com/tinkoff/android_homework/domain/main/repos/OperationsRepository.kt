@@ -1,6 +1,7 @@
 package com.tinkoff.android_homework.domain.main.repos
 
 import com.tinkoff.android_homework.domain.main.entities.Operations
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -10,6 +11,6 @@ import com.tinkoff.android_homework.domain.main.entities.Operations
  */
 interface OperationsRepository {
 
-    /** Получение всех финансовых операций */
-    suspend fun getOperations(): Operations
+    /** Подписка на измененеи списка всех финансовых операций */
+    suspend fun subscribeOperations(): Flow<Operations>
 }
