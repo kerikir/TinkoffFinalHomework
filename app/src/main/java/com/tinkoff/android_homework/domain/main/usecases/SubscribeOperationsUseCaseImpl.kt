@@ -13,9 +13,9 @@ import javax.inject.Inject
  *
  * @param repository Откуда будут приходить данные
  */
-class GetOperationsUseCaseImpl @Inject constructor(
+class SubscribeOperationsUseCaseImpl @Inject constructor(
     private val repository: OperationsRepository
-) : GetOperationsUseCase {
+) : SubscribeOperationsUseCase {
 
     // Вызов Use Case как обычной функции
     override suspend operator fun invoke(): Operations {

@@ -5,8 +5,8 @@ import com.tinkoff.android_homework.domain.main.repos.OperationsRepository
 import com.tinkoff.android_homework.domain.main.repos.TotalRepository
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeDetailUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeDetailUseCaseImpl
-import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
-import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCaseImpl
+import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCase
+import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCaseImpl
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCaseImpl
 import dagger.Module
@@ -40,8 +40,8 @@ object DomainModule {
     @Provides
     fun provideSubscribeOperationUseCase(
         repository: OperationsRepository,
-    ): GetOperationsUseCase {
-        return GetOperationsUseCaseImpl(repository)
+    ): SubscribeOperationsUseCase {
+        return SubscribeOperationsUseCaseImpl(repository)
     }
 
 

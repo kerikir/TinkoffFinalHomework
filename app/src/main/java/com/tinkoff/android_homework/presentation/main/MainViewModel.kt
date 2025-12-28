@@ -2,7 +2,7 @@ package com.tinkoff.android_homework.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tinkoff.android_homework.domain.main.usecases.GetOperationsUseCase
+import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
 import com.tinkoff.android_homework.presentation.mappers.operations.OperationItemMapper
 import com.tinkoff.android_homework.presentation.model.operations.OperationItem
@@ -24,7 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val subscribeTotalUseCase: SubscribeTotalUseCase,
-    private val getOperationsUseCase: GetOperationsUseCase,
+    private val subscribeOperationsUseCase: SubscribeOperationsUseCase,
     val operationItemMapper: OperationItemMapper,
 ) : ViewModel() {
 
@@ -46,7 +46,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
 
             // Загрузка списка финансовых операций
-            _operations.value = getOperationsUseCase()
+            _operations.value = subscribeOperationsUseCase()
                 .operations
                 .map { operationItemMapper(it) }
 
