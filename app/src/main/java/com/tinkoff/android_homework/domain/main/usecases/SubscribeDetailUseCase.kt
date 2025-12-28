@@ -11,5 +11,11 @@ import kotlinx.coroutines.flow.Flow
  */
 interface SubscribeDetailUseCase {
 
+    /**
+     * Подписка на изменение дополнительной информации о финансовой операции
+     *
+     * @param id Идентификатор финансовой информации
+     * @return Поток с информацией о финансовой операции
+     */
     suspend operator fun invoke(id: Int): Flow<Detail>
 }
