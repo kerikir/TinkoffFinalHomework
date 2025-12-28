@@ -11,27 +11,31 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
+
 /**
- * @author d.shtaynmets
+ * Сетевой модуль для внедрения зависимостей.
+ *
+ * Подключен к компоненту времени жизни всего приложения.
  */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class NetworkModule {
 
-
+    /** Связывает интерфейс с реализацией для работы с общей суммой финансовых операций */
     @Binds
     abstract fun bindTotalRepository(
         impl: TotalRepositoryImpl,
     ): TotalRepository
 
+    /** Связывает интерфейс с реализацией для работы с списком финансовых операций */
     @Binds
     abstract fun bindOperationsRepository(
         impl: OperationsRepositoryImpl,
     ): OperationsRepository
 
+    /** Связывает интерфейс с реализацией для работы с детальным описанием финансовой операции */
     @Binds
     abstract fun bindDetailRepository(
         impl: DetailRepositoryImpl,
     ): DetailRepository
-
 }
