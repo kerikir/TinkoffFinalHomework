@@ -22,7 +22,7 @@ import retrofit2.Retrofit
  */
 @Module
 @InstallIn(SingletonComponent::class)
-object ApplicationModule {
+object NetworkModule {
 
     /** Предоставляем зависимость объекта для инициализации Retrofit */
     @Provides
