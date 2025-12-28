@@ -18,7 +18,11 @@ class SubscribeTotalUseCaseImpl @Inject constructor(
     private val repository: TotalRepository,
 ) : SubscribeTotalUseCase {
 
-    // Вызов Use Case как обычной функции
+    /**
+     * Подписка на изменение общей суммы финансовых операций
+     *
+     * @return Поток с общей суммой финансовых операций
+     */
     override suspend operator fun invoke(): Flow<Total> {
         return repository.subscribeTotal()
     }
