@@ -4,10 +4,13 @@ import com.tinkoff.android_homework.data.network.datasource.DetailRemoteDataSour
 import com.tinkoff.android_homework.data.storage.mappers.detail.DetailDbModelMapper
 import com.tinkoff.android_homework.data.network.mappers.detail.DetailDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
-import com.tinkoff.android_homework.data.storage.dao.DetailDbModelDao
+import com.tinkoff.android_homework.data.storage.datasource.DetailLocalDataSource
 import com.tinkoff.android_homework.domain.main.entities.Detail
 import com.tinkoff.android_homework.domain.main.repos.DetailRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
+
 
 
 /**
@@ -15,7 +18,7 @@ import javax.inject.Inject
  */
 class DetailRepositoryImpl @Inject constructor(
     private val detailRemoteDataSource: DetailRemoteDataSource,
-    private val detailDbModelDao: DetailDbModelDao,
+    private val detailLocalDataSource: DetailLocalDataSource,
     private val detailDtoMapper: DetailDtoMapper,
     private val detailDbModelMapper: DetailDbModelMapper,
     private val internetChecker: InternetChecker,
@@ -27,17 +30,28 @@ class DetailRepositoryImpl @Inject constructor(
      * @param id Идентификатор финансовой операции.
      * @return Детальное описание финансовой операции domain-слоя
      */
-    override suspend fun subscribeDetail(id: Int): Detail {
+    override fun subscribeDetail(id: Int): Flow<Detail> {
 
+        return detailDbModelMapper(detailLocalDataSource.subscribeDetail(id))
+            .onStart {
+                // Выполняется перед началом эмита данных
+                refreshFromNetwork(id)
+            }
+    }
+
+
+    /**
+     * Получение информации о финансовой операции из сети.
+     *
+     * @param id Идентификатор финансовой операции.
+     */
+    private suspend fun refreshFromNetwork(id: Int) {
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
             // Загружаем информацию из сети
             val detailDto = detailRemoteDataSource.getDetail(id)
             // Сохраняем информацию в БД
-            detailDbModelDao.insertAll(detailDtoMapper(detailDto))
+            detailLocalDataSource.insertDetail(detailDtoMapper(detailDto))
         }
-
-        // TODO проверка на несоответствие id
-        return detailDbModelMapper(detailDbModelDao.getDetailFlow(id.toLong()))
     }
 }
