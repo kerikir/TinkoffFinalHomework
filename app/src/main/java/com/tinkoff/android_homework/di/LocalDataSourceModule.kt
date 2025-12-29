@@ -26,6 +26,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object LocalDataSourceModule {
 
+    /**
+     * Предоставляем зависимость для локального источника данных
+     * для детального описания финансовой операции
+     */
     @Singleton
     @Provides
     fun provideDetailLocalDataSource(detailDao: DetailDbModelDao) : DetailLocalDataSource {
@@ -33,6 +37,10 @@ object LocalDataSourceModule {
     }
 
 
+    /**
+     * Предоставляем зависимость для локального источника данных
+     * для общей суммы финансовых операций
+     */
     @Singleton
     @Provides
     fun provideOperationsLocalDataSource(operationDao: OperationDbModelDao) : OperationsLocalDataSource {
@@ -40,6 +48,10 @@ object LocalDataSourceModule {
     }
 
 
+    /**
+     * Предоставляем зависимость для локального источника данных
+     * для списка финансовых операций
+     */
     @Singleton
     @Provides
     fun provideTotalLocalDataSource(totalDao: TotalDbModelDao) : TotalLocalDataSource {
