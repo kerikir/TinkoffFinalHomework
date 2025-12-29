@@ -6,6 +6,10 @@ import com.tinkoff.android_homework.data.network.entities.operations.OperationsD
 /** Описание удаленного источника данных для получения списка финансовых операций. */
 interface OperationsRemoteDataSource {
 
-    /** Получение всех финансовых операций */
+    /**
+     * Получение всех финансовых операций из удаленного источника данных.
+     *
+     * @return Список финансовых операций из data-слоя (network)
+     */
     suspend fun getOperations(): OperationsDTO
 }

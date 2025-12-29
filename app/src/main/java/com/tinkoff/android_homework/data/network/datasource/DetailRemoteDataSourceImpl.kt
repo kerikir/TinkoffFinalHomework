@@ -11,7 +11,7 @@ class DetailRemoteDataSourceImpl @Inject constructor (
 ) : DetailRemoteDataSource {
 
     /**
-     * Получение информации о финансовой операции
+     * Получение информации о финансовой операции из удаленного источника данных.
      *
      * @param id Идентификатор финансовой операции.
      * @return Детальное описание финансовой операции из data-слоя (network)

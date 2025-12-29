@@ -11,7 +11,7 @@ class OperationsRemoteDataSourceImpl @Inject constructor(
 ) : OperationsRemoteDataSource {
 
     /**
-     * Получение всех финансовых операций
+     * Получение всех финансовых операций из удаленного источника данных.
      *
      * @return Список финансовых операций из data-слоя (network)
      */
