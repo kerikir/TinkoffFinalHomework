@@ -38,6 +38,6 @@ class DetailRepositoryImpl @Inject constructor(
         }
 
         // TODO проверка на несоответствие id
-        return detailDbModelMapper(detailDbModelDao.getById(id.toLong()))
+        return detailDbModelMapper(detailDbModelDao.getDetailFlow(id.toLong()))
     }
 }
