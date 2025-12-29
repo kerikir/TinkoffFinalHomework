@@ -3,7 +3,6 @@ package com.tinkoff.android_homework.data.storage.datasource
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
-import com.tinkoff.android_homework.domain.main.entities.Operations
 import kotlinx.coroutines.flow.Flow
 
 
@@ -15,7 +14,7 @@ interface OperationsLocalDataSource {
      *
      * @return Поток со списком всех финансовых операций.
      */
-    fun subscribeOperations(): Flow<Operations>
+    fun subscribeOperations(): Flow<List<OperationDbModel>>
 
 
     /**
