@@ -16,5 +16,5 @@ interface OperationsRepository {
      *
      * @return Поток со списком всех финансовых операций
      */
-    suspend fun subscribeOperations(): Flow<Operations>
+    fun subscribeOperations(): Flow<Operations>
 }

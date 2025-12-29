@@ -16,5 +16,5 @@ interface SubscribeOperationsUseCase {
      *
      * @return Поток со списком всех финансовых операций
      */
-    suspend operator fun invoke(): Flow<Operations>
+    operator fun invoke(): Flow<Operations>
 }

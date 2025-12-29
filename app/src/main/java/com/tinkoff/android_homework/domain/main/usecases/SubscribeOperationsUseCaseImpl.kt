@@ -12,10 +12,10 @@ import javax.inject.Inject
  * Use Case в domain слое.
  * Реализация бизнес-логики.
  *
- * @param repository Откуда будут приходить данные
+ * @param operationsRepository Откуда будут приходить данные
  */
 class SubscribeOperationsUseCaseImpl @Inject constructor(
-    private val repository: OperationsRepository
+    private val operationsRepository: OperationsRepository
 ) : SubscribeOperationsUseCase {
 
     /**
@@ -23,7 +23,7 @@ class SubscribeOperationsUseCaseImpl @Inject constructor(
      *
      * @return Поток со списком всех финансовых операций
      */
-    override suspend operator fun invoke(): Flow<Operations> {
-        return repository.subscribeOperations()
+    override operator fun invoke(): Flow<Operations> {
+        return operationsRepository.subscribeOperations()
     }
 }
