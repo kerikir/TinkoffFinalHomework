@@ -39,6 +39,6 @@ class TotalRepositoryImpl @Inject constructor(
         }
 
         // Получаем общую сумму финансовых операции из БД
-        return totalDbModelDao.getTotal().map { totalDbModelMapper(it) }
+        return totalDbModelDao.getTotalFlow().map { totalDbModelMapper(it) }
     }
 }

@@ -22,7 +22,7 @@ interface TotalDbModelDao {
      * @return Поток общей суммы финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${TotalDbModel.TOTAL_TABLE_NAME}")
-    fun getTotal(): Flow<TotalDbModel>
+    fun getTotalFlow(): Flow<TotalDbModel>
 
 
     /**
