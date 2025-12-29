@@ -22,6 +22,7 @@ interface DetailDbModelDao {
     @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME} WHERE id = :id")
     fun getById(id: Long): Flow<DetailDbModel>
 
+    
     /**
      * Вставка нескольких строк в таблицу базы данных для хранения
      * детального описания финансовых операций.

@@ -24,6 +24,7 @@ interface OperationDbModelDao {
     @Query("SELECT * FROM ${OperationDbModel.OPERATION_TABLE_NAME}")
     fun getAll(): Flow<List<OperationDbModel>>
 
+
     /**
      * Вставка нескольких строк в таблицу базы данных для хранения финансовых операций.
      *
