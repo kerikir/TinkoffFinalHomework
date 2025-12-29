@@ -17,5 +17,5 @@ interface DetailRepository {
      * @param id Идентификатор финансовой операции
      * @return Поток с информацией о финансовой операции
      */
-    suspend fun subscribeDetail(id: Int): Flow<Detail>
+    fun subscribeDetail(id: Int): Flow<Detail>
 }

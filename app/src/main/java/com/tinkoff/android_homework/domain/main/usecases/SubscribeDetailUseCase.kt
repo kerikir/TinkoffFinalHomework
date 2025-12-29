@@ -17,5 +17,5 @@ interface SubscribeDetailUseCase {
      * @param id Идентификатор финансовой информации
      * @return Поток с информацией о финансовой операции
      */
-    suspend operator fun invoke(id: Int): Flow<Detail>
+    operator fun invoke(id: Int): Flow<Detail>
 }

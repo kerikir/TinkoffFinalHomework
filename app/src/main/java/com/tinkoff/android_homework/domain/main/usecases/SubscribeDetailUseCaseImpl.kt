@@ -24,7 +24,7 @@ class SubscribeDetailUseCaseImpl @Inject constructor(
      * @param id Идентификатор финансовой информации
      * @return Поток с информацией о финансовой операции
      */
-    override suspend operator fun invoke(id: Int): Flow<Detail> {
+    override operator fun invoke(id: Int): Flow<Detail> {
         return detailRepository.subscribeDetail(id)
     }
 }
