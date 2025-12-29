@@ -21,7 +21,7 @@ data class DetailDbModel(
      * Первичный ключ.
      */
     @PrimaryKey
-    val id: Long,
+    val id: Int,
     /** Тип финансовой операции */
     val type: StorageOperationType,
     /** Комментарий к финансовой операции для отображения */
