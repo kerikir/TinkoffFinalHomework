@@ -3,12 +3,12 @@ package com.tinkoff.android_homework.data.repo.total
 import com.tinkoff.android_homework.data.network.datasource.TotalRemoteDataSource
 import com.tinkoff.android_homework.data.network.mappers.total.TotalDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
-import com.tinkoff.android_homework.data.storage.dao.TotalDbModelDao
+import com.tinkoff.android_homework.data.storage.datasource.TotalLocalDataSource
 import com.tinkoff.android_homework.data.storage.mappers.total.TotalDbModelMapper
 import com.tinkoff.android_homework.domain.main.entities.Total
 import com.tinkoff.android_homework.domain.main.repos.TotalRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 
@@ -16,7 +16,7 @@ import javax.inject.Inject
  * Реализация возможных действий с общей суммой финансовых операций.
  */
 class TotalRepositoryImpl @Inject constructor(
-    private val totalDbModelDao: TotalDbModelDao,
+    private val totalLocalDataSource: TotalLocalDataSource,
     private val totalRemoteDataSource: TotalRemoteDataSource,
     private val totalDtoMapper: TotalDtoMapper,
     private val totalDbModelMapper: TotalDbModelMapper,
@@ -28,17 +28,26 @@ class TotalRepositoryImpl @Inject constructor(
      *
      * @return Поток общей суммы финансовых операций
      */
-    override suspend fun subscribeTotal(): Flow<Total> {
+    override fun subscribeTotal(): Flow<Total> {
 
+        // Получаем общую сумму финансовых операции из БД
+        return totalDbModelMapper(totalLocalDataSource.subscribeTotal())
+            .onStart {
+                refreshFromNetwork()
+            }
+    }
+
+
+    /**
+     * Получение информации об общей сумме финансовых операций из сети.
+     */
+    private suspend fun refreshFromNetwork() {
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
             // Загружаем информацию из сети
             val totalDto = totalRemoteDataSource.getTotal()
             // Сохраняем информацию в БД
-            totalDbModelDao.insert(totalDtoMapper(totalDto))
+            totalLocalDataSource.insertTotal(totalDtoMapper(totalDto))
         }
-
-        // Получаем общую сумму финансовых операции из БД
-        return totalDbModelDao.getTotalFlow().map { totalDbModelMapper(it) }
     }
 }
