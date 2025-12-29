@@ -15,6 +15,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class DetailDTO(
+    // TODO удалить тип финансовой операции
     /** Тип финансовой операции */
     val type: NetworkOperationType,
     /** Сумма финансовой операции */
