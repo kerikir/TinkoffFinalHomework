@@ -29,8 +29,8 @@ interface DetailDbModelDao {
      *
      * При повторении данных в БД, детальное описание финансовой операции заменяется на новое.
      *
-     * @param operations Детальное описание финансовых операций из data-слоя (storage)
+     * @param detailOperations Детальное описание финансовых операций из data-слоя (storage)
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg operations: DetailDbModel)
+    suspend fun insertAll(vararg detailOperations: DetailDbModel)
 }
