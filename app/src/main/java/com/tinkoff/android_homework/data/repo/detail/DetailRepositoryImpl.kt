@@ -25,10 +25,10 @@ class DetailRepositoryImpl @Inject constructor(
 ) : DetailRepository {
 
     /**
-     * Получение информации о финансовой операции.
+     * Получение потока с информацией о финансовой операции.
      *
      * @param id Идентификатор финансовой операции.
-     * @return Детальное описание финансовой операции domain-слоя
+     * @return Поток с детальным описанием финансовой операции domain-слоя
      */
     override fun subscribeDetail(id: Int): Flow<Detail> {
 
