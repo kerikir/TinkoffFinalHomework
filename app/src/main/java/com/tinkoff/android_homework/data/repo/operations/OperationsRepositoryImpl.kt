@@ -37,6 +37,6 @@ class OperationsRepositoryImpl @Inject constructor(
         }
 
         // Получаем все операции из БД
-        return operationDbModelListMapper(operationDbModelDao.getAll())
+        return operationDbModelListMapper(operationDbModelDao.getAllFlow())
     }
 }

@@ -22,7 +22,7 @@ interface OperationDbModelDao {
      * @return Поток с списком финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${OperationDbModel.OPERATION_TABLE_NAME}")
-    fun getAll(): Flow<List<OperationDbModel>>
+    fun getAllFlow(): Flow<List<OperationDbModel>>
 
 
     /**
