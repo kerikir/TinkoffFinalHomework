@@ -12,5 +12,5 @@ import kotlinx.coroutines.flow.Flow
 interface TotalRepository {
 
     /** Подписка на изменение суммы всех финансовых операций */
-    suspend fun subscribeTotal(): Flow<Total>
+    fun subscribeTotal(): Flow<Total>
 }

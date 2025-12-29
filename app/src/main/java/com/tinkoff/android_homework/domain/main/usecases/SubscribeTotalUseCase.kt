@@ -16,5 +16,5 @@ interface SubscribeTotalUseCase {
      *
      * @return Поток с общей суммой финансовых операций
      */
-    suspend operator fun invoke(): Flow<Total>
+    operator fun invoke(): Flow<Total>
 }
