@@ -25,7 +25,7 @@ class OperationsDtoMapper @Inject constructor(
      *  @return Список финансовых операций data-слоя (storage).
      */
     override fun invoke(operationsDTO: OperationsDTO): List<OperationDbModel> {
-        return operationsDTO.operation.mapIndexed { index, operation ->
+        return operationsDTO.operations.mapIndexed { index, operation ->
             OperationDbModel(
                 id = operation.id.toLong(),
                 type = operationTypeMapper(operation.type),

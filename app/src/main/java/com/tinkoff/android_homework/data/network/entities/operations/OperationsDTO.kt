@@ -1,5 +1,6 @@
 package com.tinkoff.android_homework.data.network.entities.operations
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
@@ -14,9 +15,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class OperationsDTO(
-
-    // TODO переименовать поле из operation в operations
-
     /** Список финансовых операций */
-    val operation: List<OperationDTO>,
+    @SerialName("operation")
+    val operations: List<OperationDTO>,
 )
