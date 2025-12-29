@@ -13,5 +13,13 @@ interface DetailLocalDataSource {
      * @param id Идентификатор финансовой операции.
      * @return Поток с информацией о финансовой операции.
      */
-    suspend fun subscribeDetail(id: Int): Flow<DetailDbModel>
+    fun subscribeDetail(id: Int): Flow<DetailDbModel>
+
+
+    /**
+     * Вставка детального описания финансовых операций в локальный источник данных.
+     *
+     * @param detailOperations Детальное описание финансовых операций из data-слоя (storage).
+     */
+    suspend fun insertDetail(vararg detailOperations: DetailDbModel)
 }
