@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -21,7 +22,7 @@ interface OperationDbModelDao {
      * @return Поток с списком финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${OperationDbModel.OPERATION_TABLE_NAME}")
-    suspend fun getAll(): List<OperationDbModel>
+    fun getAll(): Flow<List<OperationDbModel>>
 
     /**
      * Вставка нескольких строк в таблицу базы данных для хранения финансовых операций.
