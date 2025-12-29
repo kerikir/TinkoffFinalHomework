@@ -16,9 +16,9 @@ import com.tinkoff.android_homework.data.storage.entities.OperationDbModel
 interface OperationDbModelDao {
 
     /**
-     * Получение всех записей из БД о финансовых операций.
+     * Подписка на изменение записей из БД о финансовых операциях.
      *
-     * @return Список финансовых операций из data-слоя (storage)
+     * @return Поток с списком финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${OperationDbModel.OPERATION_TABLE_NAME}")
     suspend fun getAll(): List<OperationDbModel>
