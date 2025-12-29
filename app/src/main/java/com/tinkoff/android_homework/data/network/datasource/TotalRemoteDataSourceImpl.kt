@@ -11,7 +11,7 @@ class TotalRemoteDataSourceImpl @Inject constructor(
 ) : TotalRemoteDataSource {
 
     /**
-     * Получение суммы всех финансовых операций
+     * Получение суммы всех финансовых операций из удаленного источника данных.
      *
      * @return Общая сумма финансовых операций из data-слоя (network)
      */
