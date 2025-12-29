@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -13,15 +14,13 @@ import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 @Dao
 interface DetailDbModelDao {
 
-    // TODO ошибка с разными идентификаторами и типами
-
     /**
-     * Получение всех записей из БД о детальном описании финансовых операций.
+     * Подписка на изменение всех записей из БД о детальном описании финансовых операций.
      *
-     * @return Список детальных описаний финансовых операций из data-слоя (storage)
+     * @return Поток с списком детальных описаний финансовых операций из data-слоя (storage)
      */
     @Query("SELECT * FROM ${DetailDbModel.DETAILS_TABLE_NAME} WHERE id = :id")
-    suspend fun getById(id: Long): DetailDbModel
+    fun getById(id: Long): Flow<DetailDbModel>
 
     /**
      * Вставка нескольких строк в таблицу базы данных для хранения
