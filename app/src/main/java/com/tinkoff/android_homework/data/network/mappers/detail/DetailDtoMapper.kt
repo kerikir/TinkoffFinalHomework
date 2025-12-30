@@ -26,6 +26,7 @@ class DetailDtoMapper @Inject constructor(
      *  @return Детальное описание финансовой операции data-слоя (storage).
      */
     override fun invoke(detail: DetailDTO): DetailDbModel {
+        // TODO изменить получение идентификатора
         return DetailDbModel(
             id = UUID.randomUUID().timestamp(),
             type = operationTypeMapper(detail.type),

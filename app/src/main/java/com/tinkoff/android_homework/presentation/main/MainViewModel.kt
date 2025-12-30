@@ -66,6 +66,7 @@ class MainViewModel @Inject constructor(
     ) : TotalItem? {
 
         if (operations.isEmpty()) return null
+        totalDomain ?: return null
 
         // Определение общей суммы начислений
         val incomes = operations
