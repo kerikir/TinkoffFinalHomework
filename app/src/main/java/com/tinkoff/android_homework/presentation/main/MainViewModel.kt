@@ -2,6 +2,7 @@ package com.tinkoff.android_homework.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tinkoff.android_homework.domain.main.entities.Total
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeOperationsUseCase
 import com.tinkoff.android_homework.domain.main.usecases.SubscribeTotalUseCase
 import com.tinkoff.android_homework.presentation.mappers.operations.OperationItemMapper
@@ -10,12 +11,9 @@ import com.tinkoff.android_homework.presentation.model.operations.PresentationOp
 import com.tinkoff.android_homework.presentation.model.total.TotalItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,14 +28,10 @@ class MainViewModel @Inject constructor(
     val operationItemMapper: OperationItemMapper,
 ) : ViewModel() {
 
+    /** Источник данных списка финансовых операций */
+    private val _operations: MutableStateFlow<List<OperationItem>> = MutableStateFlow(emptyList())
     /** Доступ к данным списка финансовых операций */
-    val operations: StateFlow<List<OperationItem>> = subscribeOperationsUseCase()
-        .map { it.operations.map { it -> operationItemMapper(it) } }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = emptyList()
-        )
+    val operations: StateFlow<List<OperationItem>> = _operations.asStateFlow()
 
     /** Источник данных общей суммы финансовых операций */
     private val _total: MutableStateFlow<TotalItem?> = MutableStateFlow(null)
@@ -52,37 +46,54 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
 
             // Загрузка списка финансовых операций
-            _operations.value = subscribeOperationsUseCase()
-                .operations
-                .map { operationItemMapper(it) }
+            subscribeOperationsUseCase().collect { operationsDomain ->
+                val operationList = operationsDomain.operations.map { operationItemMapper(it) }
+                _operations.value = operationList
+            }
+        }
+
+        viewModelScope.launch {
 
             // Загрузка и расчет общей суммы
-            _total.value = subscribeTotalUseCase()
-                .map { total ->
-
-                    // Определение общей суммы начислений
-                    val incomes = _operations
-                        .value
-                        .filter { it.presentationOperationType == PresentationOperationType.INCOME }
-                        .sumOf { it.operationSum }
-
-                    // Определение общей суммы расходов
-                    val outcomes = _operations
-                        .value
-                        .filter { it.presentationOperationType == PresentationOperationType.OUTCOME }
-                        .sumOf { it.operationSum }
-
-                    // Определение отношения расходов и доходов
-                    val progress = (outcomes.toFloat() / incomes.toFloat()) * 100f
-
-                    // Инициализация статистики финансовых операций
-                    TotalItem(
-                        total = total.amount,
-                        income = incomes,
-                        outcome = outcomes,
-                        progress = progress
-                    )
-                }.first()
+            combine(
+                operations,
+                subscribeTotalUseCase()
+            ) { operationsList, totalDomain ->
+                calculateTotalItem(operationsList, totalDomain)
+            }.collect { totalItem ->
+                _total.value = totalItem
+            }
         }
+    }
+
+
+
+    private fun calculateTotalItem(
+        operations: List<OperationItem>,
+        totalDomain: Total
+    ) : TotalItem? {
+
+        if (operations.isEmpty()) return null
+
+        // Определение общей суммы начислений
+        val incomes = operations
+            .filter { it.presentationOperationType == PresentationOperationType.INCOME }
+            .sumOf { it.operationSum }
+
+        // Определение общей суммы расходов
+        val outcomes = operations
+            .filter { it.presentationOperationType == PresentationOperationType.OUTCOME }
+            .sumOf { it.operationSum }
+
+        // Определение отношения расходов и доходов
+        val progress = (outcomes.toFloat() / incomes.toFloat()) * 100f
+
+        // Инициализация статистики финансовых операций
+        return TotalItem(
+            total = totalDomain.amount,
+            income = incomes,
+            outcome = outcomes,
+            progress = progress
+        )
     }
 }
