@@ -1,6 +1,7 @@
 package com.tinkoff.android_homework.domain.main.usecases
 
 import com.tinkoff.android_homework.domain.main.entities.Detail
+import com.tinkoff.android_homework.domain.main.models.OperationType
 import kotlinx.coroutines.flow.Flow
 
 
@@ -17,5 +18,5 @@ interface SubscribeDetailUseCase {
      * @param id Идентификатор финансовой информации
      * @return Поток с информацией о финансовой операции
      */
-    operator fun invoke(id: Int): Flow<Detail>
+    operator fun invoke(id: Int, type: OperationType): Flow<Detail>
 }
