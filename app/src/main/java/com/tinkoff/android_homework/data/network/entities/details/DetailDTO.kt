@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
  *
  * Модель данных для data слоя (network).
  *
- * Поля JSON: type, amount, comment, positions.
+ * Поля JSON: amount, comment, positions.
  */
 @Serializable
 data class DetailDTO(
