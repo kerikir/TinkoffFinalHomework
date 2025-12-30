@@ -16,6 +16,7 @@ interface DetailRepository {
      * Подписка на изменение дополнительной информации о финансовой операции
      *
      * @param id Идентификатор финансовой операции
+     * @param type Тип финансовой операции
      * @return Поток с информацией о финансовой операции
      */
     fun subscribeDetail(id: Int, type: OperationType): Flow<Detail>

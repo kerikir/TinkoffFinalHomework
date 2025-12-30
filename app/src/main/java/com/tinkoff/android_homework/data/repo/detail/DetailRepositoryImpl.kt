@@ -29,6 +29,7 @@ class DetailRepositoryImpl @Inject constructor(
      * Получение потока с информацией о финансовой операции.
      *
      * @param id Идентификатор финансовой операции.
+     * @param type Тип финансовой операции domain-слоя
      * @return Поток с детальным описанием финансовой операции domain-слоя
      */
     override fun subscribeDetail(id: Int, type: OperationType): Flow<Detail> {
@@ -45,6 +46,7 @@ class DetailRepositoryImpl @Inject constructor(
      * Получение информации о финансовой операции из сети.
      *
      * @param id Идентификатор финансовой операции.
+     * @param type Тип финансовой операции
      */
     private suspend fun refreshFromNetwork(id: Int, type: OperationType) {
         // Проверка на подключение интернета
