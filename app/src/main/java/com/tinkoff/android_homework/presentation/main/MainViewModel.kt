@@ -10,10 +10,12 @@ import com.tinkoff.android_homework.presentation.model.operations.PresentationOp
 import com.tinkoff.android_homework.presentation.model.total.TotalItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,10 +30,14 @@ class MainViewModel @Inject constructor(
     val operationItemMapper: OperationItemMapper,
 ) : ViewModel() {
 
-    /** Источник данных списка финансовых операций */
-    private val _operations: MutableStateFlow<List<OperationItem>> = MutableStateFlow(emptyList())
     /** Доступ к данным списка финансовых операций */
-    val operations: StateFlow<List<OperationItem>> = _operations.asStateFlow()
+    val operations: StateFlow<List<OperationItem>> = subscribeOperationsUseCase()
+        .map { it.operations.map { it -> operationItemMapper(it) } }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
     /** Источник данных общей суммы финансовых операций */
     private val _total: MutableStateFlow<TotalItem?> = MutableStateFlow(null)
