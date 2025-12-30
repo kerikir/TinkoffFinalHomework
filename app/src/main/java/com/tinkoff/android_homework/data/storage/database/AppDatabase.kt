@@ -20,7 +20,7 @@ import com.tinkoff.android_homework.data.storage.entities.TotalDbModel
  */
 @Database(
     entities = [OperationDbModel::class, TotalDbModel::class, DetailDbModel::class],
-    version = 3,
+    version = 4,
     exportSchema = false,
 )
 @TypeConverters(ListStringConverter::class)
