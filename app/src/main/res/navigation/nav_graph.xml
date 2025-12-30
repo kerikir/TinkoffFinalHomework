@@ -11,4 +11,9 @@
         android:name="com.tinkoff.android_homework.presentation.detail.DetailFragment"
         tools:layout="@layout/fragment_operations" />
 
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.tinkoff.android_homework.presentation.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail" />
+
 </navigation>
