@@ -20,6 +20,14 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.tinkoff.android_homework.presentation.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="operationType"
+            app:argType="com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType" />
+    </fragment>
 
 </navigation>
