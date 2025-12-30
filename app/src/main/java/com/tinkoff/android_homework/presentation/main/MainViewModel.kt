@@ -11,9 +11,12 @@ import com.tinkoff.android_homework.presentation.model.operations.PresentationOp
 import com.tinkoff.android_homework.presentation.model.total.TotalItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,49 +31,38 @@ class MainViewModel @Inject constructor(
     val operationItemMapper: OperationItemMapper,
 ) : ViewModel() {
 
-    /** Источник данных списка финансовых операций */
-    private val _operations: MutableStateFlow<List<OperationItem>> = MutableStateFlow(emptyList())
     /** Доступ к данным списка финансовых операций */
-    val operations: StateFlow<List<OperationItem>> = _operations.asStateFlow()
+    val operations: StateFlow<List<OperationItem>> = subscribeOperationsUseCase()
+        .map { it.operations.map { value ->  operationItemMapper(value) } }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
-    /** Источник данных общей суммы финансовых операций */
-    private val _total: MutableStateFlow<TotalItem?> = MutableStateFlow(null)
+
     /** Доступ к данным общей суммы финансовых операций */
-    val total: StateFlow<TotalItem?> = _total.asStateFlow()
-
-    
-
-    // Инициализация объекта View Model
-    init {
-        // Запуск корутины в области видимости View Model - загрузка данных асинхронно
-        viewModelScope.launch {
-
-            // Загрузка списка финансовых операций
-            subscribeOperationsUseCase().collect { operationsDomain ->
-                val operationList = operationsDomain.operations.map { operationItemMapper(it) }
-                _operations.value = operationList
-            }
-        }
-
-        viewModelScope.launch {
-
-            // Загрузка и расчет общей суммы
-            combine(
-                operations,
-                subscribeTotalUseCase()
-            ) { operationsList, totalDomain ->
-                calculateTotalItem(operationsList, totalDomain)
-            }.collect { totalItem ->
-                _total.value = totalItem
-            }
-        }
-    }
+    val total: StateFlow<TotalItem?> = combine(
+        operations,
+        subscribeTotalUseCase()
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5000),
+                initialValue = null
+            )
+    ) { operationsList, totalDomain ->
+        calculateTotalItem(operationsList, totalDomain)
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = null
+    )
 
 
 
     private fun calculateTotalItem(
         operations: List<OperationItem>,
-        totalDomain: Total
+        totalDomain: Total?
     ) : TotalItem? {
 
         if (operations.isEmpty()) return null
