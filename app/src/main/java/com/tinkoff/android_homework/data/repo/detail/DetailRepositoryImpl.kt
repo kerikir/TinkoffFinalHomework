@@ -6,6 +6,7 @@ import com.tinkoff.android_homework.data.network.mappers.detail.DetailDtoMapper
 import com.tinkoff.android_homework.data.repo.utils.InternetChecker
 import com.tinkoff.android_homework.data.storage.datasource.DetailLocalDataSource
 import com.tinkoff.android_homework.domain.main.entities.Detail
+import com.tinkoff.android_homework.domain.main.models.OperationType
 import com.tinkoff.android_homework.domain.main.repos.DetailRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onStart
@@ -30,12 +31,12 @@ class DetailRepositoryImpl @Inject constructor(
      * @param id Идентификатор финансовой операции.
      * @return Поток с детальным описанием финансовой операции domain-слоя
      */
-    override fun subscribeDetail(id: Int): Flow<Detail> {
+    override fun subscribeDetail(id: Int, type: OperationType): Flow<Detail> {
 
         return detailDbModelMapper(detailLocalDataSource.subscribeDetail(id))
             .onStart {
                 // Выполняется перед началом эмита данных
-                refreshFromNetwork(id)
+                refreshFromNetwork(id, type)
             }
     }
 
@@ -45,13 +46,13 @@ class DetailRepositoryImpl @Inject constructor(
      *
      * @param id Идентификатор финансовой операции.
      */
-    private suspend fun refreshFromNetwork(id: Int) {
+    private suspend fun refreshFromNetwork(id: Int, type: OperationType) {
         // Проверка на подключение интернета
         if (internetChecker.isInternetAvailable()) {
             // Загружаем информацию из сети
             val detailDto = detailRemoteDataSource.getDetail(id)
             // Сохраняем информацию в БД
-            detailLocalDataSource.insertDetail(detailDtoMapper(detailDto))
+            detailLocalDataSource.insertDetail(detailDtoMapper(detailDto, id, type))
         }
     }
 }
