@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">android_homework</string>
 
     <string name="main_screen_title">Трекер финансов</string>
@@ -9,5 +10,11 @@
 
     <string name="title_transfer_income">Перевод на карту</string>
     <string name="title_transfer_spending">Списание с карты</string>
+
+    <string name="title_comment">Комментарий</string>
+    <string name="title_positions">Что входит в сумму</string>
+
+    <string name="placeholder_comment">Перевод от Леши за подарки девочкам на 8 марта</string>
+    <string name="placeholder_positions">Цветы, билеты в кино, торт</string>
 
 </resources>
