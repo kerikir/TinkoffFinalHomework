@@ -12,7 +12,7 @@ import com.tinkoff.android_homework.data.storage.models.StorageOperationType
  * Модель данных для data слоя (storage).
  *
  * Имя таблицы - details_table.
- * Поля: id, type, comment, positions.
+ * Поля: id, type, amount, comment, positions.
  */
 @Entity(tableName = DETAILS_TABLE_NAME)
 data class DetailDbModel(
@@ -24,6 +24,8 @@ data class DetailDbModel(
     val id: Int,
     /** Тип финансовой операции */
     val type: StorageOperationType,
+    /** Сумма финансовой операции */
+    val amount: Int,
     /** Комментарий к финансовой операции для отображения */
     val comment: String,
     /** Список позиций (что входит в сумму операции) */
