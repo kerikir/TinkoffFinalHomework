@@ -1,7 +1,6 @@
 package com.tinkoff.android_homework.data.network.mappers.detail
 
 import com.tinkoff.android_homework.data.network.entities.details.DetailDTO
-import com.tinkoff.android_homework.data.network.mappers.models.NetworkOperationTypeMapper
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
 import com.tinkoff.android_homework.data.storage.mappers.models.StorageOperationTypeMapper
 import com.tinkoff.android_homework.domain.main.models.OperationType
@@ -32,7 +31,7 @@ class DetailDtoMapper @Inject constructor(
         
         return DetailDbModel(
             id = id,
-            type = operationTypeMapper(type),
+            type = operationTypeMapper.map(type),
             amount = detail.amount,
             comment = detail.comment,
             positions = detail.positions
