@@ -1,6 +1,7 @@
 package com.tinkoff.android_homework.domain.main.repos
 
 import com.tinkoff.android_homework.domain.main.entities.Detail
+import com.tinkoff.android_homework.domain.main.models.OperationType
 import kotlinx.coroutines.flow.Flow
 
 
@@ -17,5 +18,5 @@ interface DetailRepository {
      * @param id Идентификатор финансовой операции
      * @return Поток с информацией о финансовой операции
      */
-    fun subscribeDetail(id: Int): Flow<Detail>
+    fun subscribeDetail(id: Int, type: OperationType): Flow<Detail>
 }
