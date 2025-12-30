@@ -2,9 +2,9 @@ package com.tinkoff.android_homework.data.network.mappers.detail
 
 import com.tinkoff.android_homework.data.network.entities.details.DetailDTO
 import com.tinkoff.android_homework.data.network.mappers.models.NetworkOperationTypeMapper
-import com.tinkoff.android_homework.data.network.models.NetworkOperationType
 import com.tinkoff.android_homework.data.storage.entities.DetailDbModel
-import java.util.UUID
+import com.tinkoff.android_homework.data.storage.mappers.models.StorageOperationTypeMapper
+import com.tinkoff.android_homework.domain.main.models.OperationType
 import javax.inject.Inject
 
 
@@ -16,8 +16,8 @@ import javax.inject.Inject
  * в тип операций data-слоя (storage)
  */
 class DetailDtoMapper @Inject constructor(
-    private val operationTypeMapper: NetworkOperationTypeMapper
-) : (DetailDTO, Int, NetworkOperationType) -> DetailDbModel {
+    private val operationTypeMapper: StorageOperationTypeMapper
+) : (DetailDTO, Int, OperationType) -> DetailDbModel {
 
     /**
      *  Преобразователь детального описания финансовой операции из типа data-слоя (network)
@@ -25,10 +25,10 @@ class DetailDtoMapper @Inject constructor(
      *
      *  @param detail Детальное описание финансовой операции data-слоя (network).
      *  @param id Идентификатор финансовой операции
-     *  @param type Тип финансовой операции
+     *  @param type Тип финансовой операции domain-слоя
      *  @return Детальное описание финансовой операции data-слоя (storage).
      */
-    override fun invoke(detail: DetailDTO, id: Int, type: NetworkOperationType): DetailDbModel {
+    override fun invoke(detail: DetailDTO, id: Int, type: OperationType): DetailDbModel {
         
         return DetailDbModel(
             id = id,

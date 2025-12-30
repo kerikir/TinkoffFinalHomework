@@ -22,4 +22,18 @@ class StorageOperationTypeMapper @Inject constructor() : (StorageOperationType) 
             StorageOperationType.OUTCOME -> OperationType.OUTCOME
         }
     }
+
+
+    /**
+     *  Преобразователь из типа операции domain-слоя в тип операций data-слоя (storage).
+     *
+     *  @param operationType Тип финансовой операции domain-слоя.
+     *  @return Тип финансовой операции data-слоя (storage).
+     */
+    fun map(operationType: OperationType) : StorageOperationType {
+        return when (operationType) {
+            OperationType.INCOME -> StorageOperationType.INCOME
+            OperationType.OUTCOME -> StorageOperationType.OUTCOME
+        }
+    }
 }
