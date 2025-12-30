@@ -33,8 +33,7 @@ object DatabaseModule {
             AppDatabase::class.java,
             DATABASE_NAME
         )
-            .addMigrations()
-            .setQueryExecutor(Executors.newFixedThreadPool(4))
+            .fallbackToDestructiveMigration()
             .build()
 
 
