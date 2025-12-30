@@ -23,10 +23,5 @@ class DetailViewModel @Inject constructor(
     private val _details: MutableStateFlow<DetailItem?> = MutableStateFlow(null)
     val details: StateFlow<DetailItem?> = _details.asStateFlow()
 
-    init {
-        viewModelScope.launch {
-            val detail = subscribeDetailUseCase.invoke(0)
-            Log.e("TAGRTRT", "detail :${detail}")
-        }
-    }
+
 }
