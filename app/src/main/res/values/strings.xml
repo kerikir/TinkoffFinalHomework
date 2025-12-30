@@ -6,4 +6,8 @@
 
     <string name="statistic_card_title">Статистика</string>
     <string name="statistic_card_subtitle">Всего денег на картах</string>
+
+    <string name="title_transfer_income">Перевод на карту</string>
+    <string name="title_transfer_spending">Списание с карты</string>
+
 </resources>
