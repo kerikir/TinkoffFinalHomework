@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/operationsFragment"
-        android:name="com.tinkoff.android_homework.presentation.detail.DetailFragment"
+        android:name="com.tinkoff.android_homework.presentation.main.OperationsFragment"
         tools:layout="@layout/fragment_operations">
 
         <action
