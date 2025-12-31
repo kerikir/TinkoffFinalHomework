@@ -109,10 +109,10 @@ class DetailFragment : Fragment() {
                     }
 
                     // Установка суммы финансовой операции
-                    transferSum.text
+                    transferSum.text = detail?.amount.toString()
                     // Установка описания финансовой операции
                     comment.text = detail?.comment
-                    // Установка
+                    // Установка списка позиций в финансовой операции
                     positions.text = detail?.positions?.joinToString(", ")
                 }
             }
