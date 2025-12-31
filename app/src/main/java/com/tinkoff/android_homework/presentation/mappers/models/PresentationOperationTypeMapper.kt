@@ -22,4 +22,18 @@ class PresentationOperationTypeMapper @Inject constructor() : (OperationType) ->
             OperationType.OUTCOME -> PresentationOperationType.OUTCOME
         }
     }
+
+
+    /**
+     *  Преобразователь из типа операции presentation-слоя в тип операций domain-слоя.
+     *
+     *  @param presentationOperationType Тип финансовой операции presentationOperationType.
+     *  @return Тип финансовой операции domain-слоя.
+     */
+    fun map(presentationOperationType: PresentationOperationType) : OperationType {
+        return when (presentationOperationType) {
+            PresentationOperationType.INCOME -> OperationType.INCOME
+            PresentationOperationType.OUTCOME -> OperationType.OUTCOME
+        }
+    }
 }
