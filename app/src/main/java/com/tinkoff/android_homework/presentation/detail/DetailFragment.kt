@@ -36,11 +36,9 @@ class DetailFragment : Fragment() {
     /** Аргументы при навигации с помощью компонента Navigation */
     private val args: DetailFragmentArgs by navArgs()
 
-
     /** Фабрика View Model */
     @Inject
     lateinit var viewModelFactory: DetailViewModel.Factory
-    /**  */
     private val viewModel: DetailViewModel by viewModels {
         createViewModelFactory(
             factory = viewModelFactory,
@@ -48,6 +46,7 @@ class DetailFragment : Fragment() {
             operationType = args.operationType
         )
     }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
