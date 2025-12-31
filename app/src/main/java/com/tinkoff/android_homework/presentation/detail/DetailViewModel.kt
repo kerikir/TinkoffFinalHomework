@@ -27,8 +27,10 @@ class DetailViewModel @AssistedInject constructor(
         ) : DetailViewModel
     }
 
+
+
+
+
     private val _details: MutableStateFlow<DetailItem?> = MutableStateFlow(null)
     val details: StateFlow<DetailItem?> = _details.asStateFlow()
-
-
 }
