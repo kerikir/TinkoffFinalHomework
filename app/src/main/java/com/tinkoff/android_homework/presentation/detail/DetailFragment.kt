@@ -59,6 +59,8 @@ class DetailFragment : Fragment() {
         transferSum = view.findViewById(R.id.transfer_sum)
         comment = view.findViewById(R.id.inscription_comment)
         positions = view.findViewById(R.id.inscription_positions)
+
+        subscribeToDetail()
     }
 
 
