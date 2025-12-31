@@ -29,7 +29,7 @@ class OperationsFragment : Fragment(R.layout.fragment_operations) {
     private lateinit var totalSum: TextView
     /** Ссылка на текстовое представление - сумма расходов */
     private lateinit var outcome: TextView
-    /** Ссылка на текстовое представление - общая начислений */
+    /** Ссылка на текстовое представление - общая сумма начислений */
     private lateinit var income: TextView
     /** Ссылка на индикатор прогресса - отношение доходов к расходам */
     private lateinit var progressBar: LinearProgressIndicator
