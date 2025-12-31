@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.pluginSerialization)
 
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
 
     alias(libs.plugins.navigation.safeargs)
@@ -96,12 +95,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    //AssistedInject
-    implementation(libs.assisted.inject.annotation)
-    ksp(libs.assisted.inject.processor)
 }
 
-//kapt {
-//    correctErrorTypes = true
-//}
+// Решение конфликта XML библиотек
+configurations.all {
+    resolutionStrategy {
+        exclude(group = "xpp3", module = "xpp3")
+    }
+}

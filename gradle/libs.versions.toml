@@ -19,7 +19,6 @@ ksp = "2.1.21-2.0.2"
 nav_graph = "2.9.6"
 hilt-version = "2.57.2"
 view-binding-version = "8.13.2"
-assistedInject = "2.08.1"
 
 
 
@@ -48,8 +47,6 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-version" }
 view-binding = { group = "com.android.databinding", name = "viewbinding", version.ref = "view-binding-version" }
 
-assisted-inject-annotation = {group = "com.squareup.inject", name = "assisted-inject-annotations-dagger", version.ref = "assistedInject"}
-assisted-inject-processor = {group = "com.squareup.inject", name = "assisted-inject-processor-dagger", version.ref = "assistedInject"}
 #hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 #hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 #dagger-core = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }

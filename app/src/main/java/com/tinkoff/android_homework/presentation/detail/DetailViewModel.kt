@@ -8,6 +8,7 @@ import com.tinkoff.android_homework.presentation.mappers.models.PresentationOper
 import com.tinkoff.android_homework.presentation.model.detail.DetailItem
 import com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,7 +30,7 @@ class DetailViewModel @AssistedInject constructor(
      * Фабрика ViewModel.
      * Автоматическая реализация Dagger.
      */
-    @dagger.assisted.AssistedFactory
+    @AssistedFactory
     interface Factory {
         fun create(
             operationId: Int,

@@ -4,7 +4,7 @@ import com.tinkoff.android_homework.presentation.detail.DetailViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 
 
 /**
@@ -13,11 +13,11 @@ import dagger.hilt.android.components.ViewModelComponent
  * Подключен к компоненту модели представления.
  */
 @Module
-@InstallIn(ViewModelComponent::class)
-abstract class ViewModelFactoryModule {
+@InstallIn(SingletonComponent::class)
+interface ViewModelFactoryModule {
 
     @Binds
     abstract fun bindDetailViewModelFactory(
-        factory: DetailViewModel.Factory
+        factory: DetailViewModel.FactoryImpl
     ) : DetailViewModel.Factory
 }
