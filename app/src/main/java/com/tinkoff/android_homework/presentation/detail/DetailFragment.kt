@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.tinkoff.android_homework.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -34,9 +35,12 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch {
-            Log.e("TAGRTRT", "viewModel.details.value :${viewModel.details.value}")
-        }
+
+        iconOperation = view.findViewById(R.id.icon_operation)
+        titleTransfer = view.findViewById(R.id.title_transfer)
+        transferSum = view.findViewById(R.id.transfer_sum)
+        comment = view.findViewById(R.id.inscription_comment)
+        positions = view.findViewById(R.id.inscription_positions)
     }
 
 }
