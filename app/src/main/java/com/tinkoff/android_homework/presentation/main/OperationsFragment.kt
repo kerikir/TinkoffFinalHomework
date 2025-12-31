@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.tinkoff.android_homework.R
 import com.tinkoff.android_homework.presentation.adapter.OperationAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlin.getValue
 
 
 
+@AndroidEntryPoint
 class OperationsFragment : Fragment(R.layout.fragment_operations) {
 
     // Модель представлений - ленивая инициализация
