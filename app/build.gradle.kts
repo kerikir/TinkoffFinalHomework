@@ -96,6 +96,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //AssistedInject
+    implementation(libs.assisted.inject.annotation)
+    ksp(libs.assisted.inject.processor)
 }
 
 //kapt {
