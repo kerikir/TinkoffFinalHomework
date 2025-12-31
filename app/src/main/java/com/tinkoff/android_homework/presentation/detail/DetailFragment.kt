@@ -37,8 +37,10 @@ class DetailFragment : Fragment() {
     private val args: DetailFragmentArgs by navArgs()
 
 
+    /** Фабрика View Model */
     @Inject
     lateinit var viewModelFactory: DetailViewModel.Factory
+    /**  */
     private val viewModel: DetailViewModel by viewModels {
         createViewModelFactory(
             factory = viewModelFactory,
@@ -60,7 +62,10 @@ class DetailFragment : Fragment() {
 
 
 
-    /** Создание фабрики */
+    /**
+     * Создание фабрики.
+     * Функция-обертка.
+     */
     private fun createViewModelFactory(
         factory: DetailViewModel.Factory,
         operationId: Int,
@@ -69,6 +74,7 @@ class DetailFragment : Fragment() {
 
         return object : ViewModelProvider.Factory {
 
+            // Игнорирование предупреждение компилятора
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return factory.create(operationId, operationType) as T

@@ -18,7 +18,10 @@ class DetailViewModel @AssistedInject constructor(
     @Assisted private val operationType: PresentationOperationType
 ) : ViewModel() {
 
-    /** Фабрика ViewModel */
+    /**
+     * Фабрика ViewModel.
+     * Автоматическая реализация Dagger.
+     */
     @dagger.assisted.AssistedFactory
     interface Factory {
         fun create(
