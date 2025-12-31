@@ -22,6 +22,7 @@ class DetailItemMapper @Inject constructor(
     override operator fun invoke(detail: Detail): DetailItem {
         return DetailItem(
             type = presentationOperationTypeMapper(detail.type),
+            amount = detail.amount,
             comment = detail.comment,
             positions = detail.positions
         )
