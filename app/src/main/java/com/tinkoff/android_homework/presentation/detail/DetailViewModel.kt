@@ -7,6 +7,7 @@ import com.tinkoff.android_homework.domain.main.usecases.SubscribeDetailUseCase
 import com.tinkoff.android_homework.presentation.mappers.details.DetailItemMapper
 import com.tinkoff.android_homework.presentation.mappers.models.PresentationOperationTypeMapper
 import com.tinkoff.android_homework.presentation.model.detail.DetailItem
+import com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -21,13 +22,19 @@ class DetailViewModel @AssistedInject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    /** Идентификатор финансовой операции из аргумента компонента Navigation */
+    private val id: Int
+        get() = savedStateHandle.get<Int>("id") ?: -1
 
+    /** Тип финансовой операции из аргумента компонента Navigation */
+    private val operationType: PresentationOperationType?
+        get() = savedStateHandle["operationType"] as PresentationOperationType?
 
 
     /** Доступ к данным описание финансовой операции */
     val detail: StateFlow<DetailItem?> = subscribeDetailUseCase(
-        operationId,
-        presentationOperationTypeMapper.map(operationType))
+        id,
+        presentationOperationTypeMapper.map(operationType!!))
         .map { detailItemMapper(it) }
         .stateIn(
             scope = viewModelScope,
