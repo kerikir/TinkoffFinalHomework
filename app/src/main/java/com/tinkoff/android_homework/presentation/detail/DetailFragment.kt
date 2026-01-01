@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -31,6 +32,11 @@ class DetailFragment : Fragment() {
 
     /** Аргументы при навигации с помощью компонента Navigation */
     private val args: DetailFragmentArgs by navArgs()
+    /**
+     * Модель представления.
+     * Автоматически получает параметры через SavedStateHandle
+     */
+    private val viewModel: DetailViewModel by viewModels()
 
 
 
