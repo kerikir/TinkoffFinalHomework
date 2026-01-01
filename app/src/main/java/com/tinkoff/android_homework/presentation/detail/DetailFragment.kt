@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class DetailFragment : Fragment() {
+class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     /** Ссылка на представление с изображение - иконка финансовой операции */
     private lateinit var iconOperation: ImageView
@@ -36,7 +36,7 @@ class DetailFragment : Fragment() {
      * Модель представления.
      * Автоматически получает параметры через SavedStateHandle
      */
-    private val viewModel: DetailViewModel by viewModels()
+    private val viewModel: DetailViewModel by viewModels<DetailViewModel>()
 
 
 
