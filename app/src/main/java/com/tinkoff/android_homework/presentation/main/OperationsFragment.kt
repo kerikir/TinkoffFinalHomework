@@ -136,7 +136,7 @@ class OperationsFragment : Fragment(R.layout.fragment_operations) {
     private fun navigateToDetail(operationItem: OperationItem) {
         // Определение действие навигации
         val action = OperationsFragmentDirections.actionOperationsFragmentToDetailFragment(
-            0,
+            operationItem.id,
             operationItem.presentationOperationType
         )
 
