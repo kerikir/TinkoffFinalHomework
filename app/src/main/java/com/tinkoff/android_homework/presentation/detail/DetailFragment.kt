@@ -1,16 +1,11 @@
 package com.tinkoff.android_homework.presentation.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
@@ -18,7 +13,6 @@ import com.tinkoff.android_homework.R
 import com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -38,17 +32,6 @@ class DetailFragment : Fragment() {
     /** Аргументы при навигации с помощью компонента Navigation */
     private val args: DetailFragmentArgs by navArgs()
 
-    /** Фабрика View Model */
-    @Inject
-    lateinit var viewModelFactory: DetailViewModel.Factory
-    private val viewModel: DetailViewModel by viewModels {
-        createViewModelFactory(
-            factory = viewModelFactory,
-            operationId = args.id,
-            operationType = args.operationType
-        )
-    }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,28 +44,6 @@ class DetailFragment : Fragment() {
         positions = view.findViewById(R.id.inscription_positions)
 
         subscribeToDetail()
-    }
-
-
-
-    /**
-     * Создание фабрики.
-     * Функция-обертка.
-     */
-    private fun createViewModelFactory(
-        factory: DetailViewModel.Factory,
-        operationId: Int,
-        operationType: PresentationOperationType
-    ) : ViewModelProvider.Factory {
-
-        return object : ViewModelProvider.Factory {
-
-            // Игнорирование предупреждение компилятора
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return factory.create(operationId, operationType) as T
-            }
-        }
     }
 
 
