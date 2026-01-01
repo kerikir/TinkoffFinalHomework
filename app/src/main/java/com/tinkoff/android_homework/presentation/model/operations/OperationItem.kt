@@ -9,6 +9,8 @@ package com.tinkoff.android_homework.presentation.model.operations
  * Модель данных для отображения в Recycler View.
  */
 data class OperationItem(
+    /** Уникальный идентификатор финансовой операции */
+    val id: Int,
     /** Тип финансовой операции */
     val presentationOperationType: PresentationOperationType,
     /** Название финансовой операции */
