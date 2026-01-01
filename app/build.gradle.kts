@@ -96,3 +96,11 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+
+
+configurations.all {
+    resolutionStrategy {
+        // Исключение xpp3
+        exclude(group = "xpp3", module = "xpp3")
+    }
+}
