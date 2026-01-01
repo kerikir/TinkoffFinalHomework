@@ -8,14 +8,17 @@ import com.tinkoff.android_homework.presentation.mappers.details.DetailItemMappe
 import com.tinkoff.android_homework.presentation.mappers.models.PresentationOperationTypeMapper
 import com.tinkoff.android_homework.presentation.model.detail.DetailItem
 import com.tinkoff.android_homework.presentation.model.operations.PresentationOperationType
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
 
-class DetailViewModel @AssistedInject constructor(
+
+@HiltViewModel
+class DetailViewModel @Inject constructor(
     private val subscribeDetailUseCase: SubscribeDetailUseCase,
     private val presentationOperationTypeMapper: PresentationOperationTypeMapper,
     private val detailItemMapper: DetailItemMapper,
