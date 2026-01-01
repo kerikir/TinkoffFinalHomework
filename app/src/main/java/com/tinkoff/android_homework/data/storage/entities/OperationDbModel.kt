@@ -22,7 +22,7 @@ data class OperationDbModel(
      * Первичный ключ.
      */
     @PrimaryKey()
-    val id: Long,
+    val id: Int,
     /** Тип финансовой операции */
     val type: StorageOperationType,
     /**
