@@ -96,10 +96,3 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
-
-// Решение конфликта XML библиотек
-configurations.all {
-    resolutionStrategy {
-        exclude(group = "xpp3", module = "xpp3")
-    }
-}
