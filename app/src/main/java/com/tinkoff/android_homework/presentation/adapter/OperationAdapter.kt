@@ -15,7 +15,8 @@ import com.tinkoff.android_homework.presentation.model.operations.PresentationOp
  * Преобразование объекта данных в элемент интерфейса.
  * Управляет данными и связывает их с View Holder.
  */
-class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationViewHolder>() {
+class OperationAdapter (val clickListener: (OperationItem) -> Unit)
+    : RecyclerView.Adapter<OperationAdapter.OperationViewHolder>() {
 
     /** Список элементов для отображения. */
     var data: List<OperationItem> = emptyList()
@@ -59,6 +60,11 @@ class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationViewHold
             holder.operationTitle.text = operationItem.operationTitle
             // Установка суммы финансовой операции
             holder.operationSum.text = operationItem.operationSum.toString()
+
+            // Обработка нажатия по элементу в RecyclerView
+            holder.itemView.setOnClickListener {
+                clickListener(operationItem)
+            }
         }
     }
 

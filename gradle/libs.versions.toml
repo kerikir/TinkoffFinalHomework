@@ -20,6 +20,8 @@ nav_graph = "2.9.6"
 hilt-version = "2.57.2"
 view-binding-version = "8.13.2"
 
+
+
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -56,6 +58,9 @@ view-binding = { group = "com.android.databinding", name = "viewbinding", versio
 #api 'com.google.dagger:dagger-android:2.37'
 #api 'com.google.dagger:dagger-android-support:2.37'
 #kapt 'com.google.dagger:dagger-android-processor:2.37'
+
+
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -63,7 +68,6 @@ kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 pluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
-
 
 #ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 #hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

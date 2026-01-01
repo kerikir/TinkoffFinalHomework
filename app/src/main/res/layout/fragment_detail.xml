@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Иконка финансовой операции -->
+    <ImageView
+        android:id="@+id/icon_operation"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        tools:src="@drawable/income_icon"/>
+
+
+
+    <!-- Сумма операции -->
+    <TextView
+        android:id="@+id/title_transfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_black"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/icon_operation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/transfer_sum"
+        tools:text="@string/title_transfer_income"/>
+
+    <TextView
+        android:id="@+id/transfer_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_black"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@id/title_transfer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        tools:text="+ 2 100 ₽"/>
+
+
+
+    <!-- Комментарий к операции -->
+    <TextView
+        android:id="@+id/title_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transfer_sum"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        tools:text="@string/title_comment"
+        android:textSize="18sp"
+        android:textColor="@color/gray"/>
+
+    <TextView
+        android:id="@+id/inscription_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_comment"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        tools:text="@string/placeholder_comment"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+
+    <!-- Состав финансовой операций -->
+    <TextView
+        android:id="@+id/title_positions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inscription_comment"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="42dp"
+        tools:text="@string/title_positions"
+        android:textSize="18sp"
+        android:textColor="@color/gray"/>
+
+    <TextView
+        android:id="@+id/inscription_positions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_positions"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        tools:text="@string/placeholder_positions"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

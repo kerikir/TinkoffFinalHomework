@@ -5,8 +5,11 @@ plugins {
     alias(libs.plugins.pluginSerialization)
 
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
+
+    alias(libs.plugins.navigation.safeargs)
+
+    id("kotlin-parcelize")
 }
 
 android {
@@ -81,7 +84,7 @@ dependencies {
     // Jetpack Navigation
     implementation(libs.navigation.graph.fragment)
     implementation(libs.navigation.graph.ui)
-//    implementation(libs.navigation.graph.safeargs)
+    implementation(libs.navigation.graph.safeargs)
 
     // Hilt
     implementation(libs.hilt.android)
@@ -96,6 +99,10 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 }
 
-//kapt {
-//    correctErrorTypes = true
-//}
+
+configurations.all {
+    resolutionStrategy {
+        // Исключение xpp3
+        exclude(group = "xpp3", module = "xpp3")
+    }
+}

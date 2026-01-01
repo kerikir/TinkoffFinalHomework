@@ -28,6 +28,7 @@ class DetailDbModelMapper @Inject constructor(
     fun map(detailDbModel: DetailDbModel): Detail {
         return Detail(
             type = operationTypeMapper(detailDbModel.type),
+            amount = detailDbModel.amount,
             comment = detailDbModel.comment,
             positions = detailDbModel.positions
         )
