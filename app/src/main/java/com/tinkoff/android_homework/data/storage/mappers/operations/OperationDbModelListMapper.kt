@@ -28,8 +28,12 @@ class OperationDbModelListMapper @Inject constructor(
     fun map(operations: List<OperationDbModel>): Operations {
         return Operations(
             operations = operations.map { operation ->
-                Operation(operationTypeMapper(operation.type),
-                    operation.name, operation.amount)
+                Operation(
+                    operation.id,
+                    operationTypeMapper(operation.type),
+                    operation.name,
+                    operation.amount
+                )
             }
         )
     }

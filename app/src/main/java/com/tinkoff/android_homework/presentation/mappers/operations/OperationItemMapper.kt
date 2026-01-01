@@ -21,6 +21,7 @@ class OperationItemMapper @Inject constructor(
      */
     override operator fun invoke(operation: Operation): OperationItem {
         return OperationItem(
+            id = operation.id,
             presentationOperationType = presentationOperationTypeMapper(operation.type),
             operationTitle = operation.name,
             operationSum = operation.amount
