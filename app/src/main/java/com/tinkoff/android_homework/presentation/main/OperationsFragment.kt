@@ -8,11 +8,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.tinkoff.android_homework.R
 import com.tinkoff.android_homework.presentation.adapter.OperationAdapter
+import com.tinkoff.android_homework.presentation.model.operations.OperationItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlin.getValue
@@ -38,7 +40,9 @@ class OperationsFragment : Fragment(R.layout.fragment_operations) {
     /** Ссылка на представление с переработкой - список финансовых операций */
     private lateinit var operationsRecyclerView: RecyclerView
     /** Адаптер для Recycler View */
-    private val operationAdapter = OperationAdapter()
+    private val operationAdapter = OperationAdapter {
+        navigateToDetail(it)
+    }
 
 
 
@@ -124,5 +128,19 @@ class OperationsFragment : Fragment(R.layout.fragment_operations) {
         operationsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         // Установка адаптера для RecyclerView
         operationsRecyclerView.adapter = operationAdapter
+    }
+
+
+
+    /** Переход к следующему фрагменту */
+    private fun navigateToDetail(operationItem: OperationItem) {
+        // Определение действие навигации
+        val action = OperationsFragmentDirections.actionOperationsFragmentToDetailFragment(
+            0,
+            operationItem.presentationOperationType
+        )
+
+        // Осуществление перехода к фрагменту
+        findNavController().navigate(action)
     }
 }
